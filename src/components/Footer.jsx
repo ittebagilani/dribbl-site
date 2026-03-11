@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react'
+import { Twitter, Instagram, Linkedin } from 'lucide-react'
 import { useBreakpoint } from '../hooks/useBreakpoint'
 
 /* ── Isometric Grid Canvas ────────────────────────────── */
@@ -51,9 +52,17 @@ const FooterGrid = () => {
   )
 }
 
-/* ── Social Icon (geometric circle) ─────────────────── */
-const SocialIcon = ({ label }) => (
-  <div
+const socialLinks = [
+  { icon: Twitter,   label: 'X / Twitter', href: '#' },
+  { icon: Instagram, label: 'Instagram',   href: '#' },
+  { icon: Linkedin,  label: 'LinkedIn',    href: '#' },
+]
+
+/* ── Social Icon ─────────────────────────────────────── */
+const SocialIcon = ({ icon: Icon, label, href }) => (
+  <a
+    href={href}
+    title={label}
     style={{
       width: 36,
       height: 36,
@@ -62,40 +71,23 @@ const SocialIcon = ({ label }) => (
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      transition: 'border-color 0.2s, background 0.2s',
+      color: 'rgba(244,244,242,0.5)',
+      textDecoration: 'none',
+      transition: 'border-color 0.2s, background 0.2s, color 0.2s',
     }}
     onMouseEnter={(e) => {
       e.currentTarget.style.borderColor = '#FF0040'
       e.currentTarget.style.background = 'rgba(255,0,64,0.06)'
+      e.currentTarget.style.color = '#FF0040'
     }}
     onMouseLeave={(e) => {
       e.currentTarget.style.borderColor = 'rgba(244,244,242,0.15)'
       e.currentTarget.style.background = 'transparent'
+      e.currentTarget.style.color = 'rgba(244,244,242,0.5)'
     }}
-    title={label}
   >
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-      {label === 'X' && (
-        <path d="M1 1 L13 13 M13 1 L1 13" stroke="rgba(244,244,242,0.5)" strokeWidth="1.2" />
-      )}
-      {label === 'Instagram' && (
-        <>
-          <rect x="2" y="2" width="10" height="10" rx="3" stroke="rgba(244,244,242,0.5)" strokeWidth="1" />
-          <circle cx="7" cy="7" r="2.5" stroke="rgba(244,244,242,0.5)" strokeWidth="1" />
-          <circle cx="10.5" cy="3.5" r="0.8" fill="rgba(244,244,242,0.5)" />
-        </>
-      )}
-      {label === 'LinkedIn' && (
-        <>
-          <rect x="1" y="1" width="12" height="12" rx="2" stroke="rgba(244,244,242,0.5)" strokeWidth="1" />
-          <line x1="4" y1="6" x2="4" y2="11" stroke="rgba(244,244,242,0.5)" strokeWidth="1" />
-          <line x1="4" y1="4" x2="4" y2="4.5" stroke="rgba(244,244,242,0.5)" strokeWidth="1.5" />
-          <line x1="7" y1="6" x2="7" y2="11" stroke="rgba(244,244,242,0.5)" strokeWidth="1" />
-          <path d="M7 8 C7 6 11 6 11 8 L11 11" stroke="rgba(244,244,242,0.5)" strokeWidth="1" fill="none" />
-        </>
-      )}
-    </svg>
-  </div>
+    <Icon size={14} strokeWidth={1.5} />
+  </a>
 )
 
 /* ── Footer ───────────────────────────────────────────── */
@@ -144,28 +136,11 @@ const Footer = () => {
         }}
       >
         {/* Wordmark */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <div
-            style={{
-              width: 22,
-              height: 22,
-              background: '#FF0040',
-              clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)',
-              flexShrink: 0,
-            }}
-          />
-          <span
-            style={{
-              fontFamily: 'Space Grotesk, sans-serif',
-              fontWeight: 700,
-              fontSize: 18,
-              color: '#F4F4F2',
-              letterSpacing: '-0.03em',
-            }}
-          >
-            Dribbl
-          </span>
-        </div>
+        <img
+          src="/images/Dribbl-banner.png"
+          alt="Dribbl"
+          style={{ height: 36, width: 'auto', objectFit: 'contain' }}
+        />
 
         {/* Tagline */}
         {!isMobile && (
@@ -177,14 +152,14 @@ const Footer = () => {
               letterSpacing: '0.08em',
             }}
           >
-            Share your journey. Get scouted.
+            Dribbl — Your Journey. Your Game. Your Network.
           </span>
         )}
 
         {/* Social Icons */}
         <div style={{ display: 'flex', gap: 10 }}>
-          {['X', 'Instagram', 'LinkedIn'].map((s) => (
-            <SocialIcon key={s} label={s} />
+          {socialLinks.map((s) => (
+            <SocialIcon key={s.label} {...s} />
           ))}
         </div>
       </div>

@@ -134,35 +134,100 @@ const DemoSection = () => {
       {/* Header */}
       <div style={{ marginBottom: 64, ...fade(0) }}>
         <div className="overline" style={{ marginBottom: 20 }}>
-          // SNEAK PEEK
+          // HOW IT WORKS
         </div>
         <h2
           style={{
-            fontFamily: 'Space Grotesk, sans-serif',
-            fontWeight: 700,
+            fontFamily: 'Inter, sans-serif',
+            fontWeight: 800,
             fontSize: 'clamp(34px, 4vw, 58px)',
             color: '#F4F4F2',
             letterSpacing: '-0.035em',
             margin: '0 0 20px',
           }}
         >
-          See Dribbl in action.
+          Up and Running in Minutes.
         </h2>
         <p
           style={{
             fontFamily: 'JetBrains Mono, monospace',
-            fontSize: 12,
+            fontSize: 14,
             lineHeight: 1.9,
-            color: 'rgba(244,244,242,0.45)',
+            color: 'rgba(244,244,242,0.65)',
             maxWidth: 560,
             margin: '0 auto',
             letterSpacing: '0.02em',
           }}
         >
-          Our AI performance analysis engine processes footage in real-time,
-          extracting 200+ data points per session — from sprint velocity to
-          off-ball movement patterns that scouts have never been able to quantify before.
+          Sign up and build your profile for free. Connect with the soccer community. Get discovered.
         </p>
+      </div>
+
+      {/* Steps */}
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
+          gap: isMobile ? 20 : 2,
+          width: '100%',
+          maxWidth: 900,
+          marginBottom: 64,
+          ...fade(80),
+        }}
+      >
+        {[
+          { num: '01', label: 'Create Your Profile', desc: 'Sign up and build your player, coach, or club profile for free in minutes.' },
+          { num: '02', label: 'Connect', desc: 'Find and follow teammates, coaches, and clubs you\'re part of or want to be part of.' },
+          { num: '03', label: 'Get Discovered', desc: 'Let coaches and scouts come to you while you focus on your game.' },
+        ].map(({ num, label, desc }, i) => (
+          <div
+            key={num}
+            style={{
+              flex: 1,
+              border: '1px solid rgba(255,255,255,0.06)',
+              padding: isMobile ? '24px 20px' : '32px 28px',
+              background: 'rgba(255,255,255,0.02)',
+              position: 'relative',
+              textAlign: 'left',
+            }}
+          >
+            <div
+              style={{
+                fontFamily: 'JetBrains Mono, monospace',
+                fontSize: 10,
+                color: '#FF0040',
+                letterSpacing: '0.14em',
+                marginBottom: 16,
+              }}
+            >
+              STEP {num}
+            </div>
+            <h3
+              style={{
+                fontFamily: 'Inter, sans-serif',
+                fontWeight: 800,
+                fontSize: 18,
+                color: '#F4F4F2',
+                letterSpacing: '-0.02em',
+                margin: '0 0 12px',
+              }}
+            >
+              {label}
+            </h3>
+            <p
+              style={{
+                fontFamily: 'JetBrains Mono, monospace',
+                fontSize: 14,
+                lineHeight: 1.85,
+                color: 'rgba(244,244,242,0.6)',
+                margin: 0,
+                letterSpacing: '0.02em',
+              }}
+            >
+              {desc}
+            </p>
+          </div>
+        ))}
       </div>
 
       {/* Demo Box */}
@@ -257,10 +322,10 @@ const DemoSection = () => {
             className="btn-glass"
             style={{ color: '#F4F4F2', borderColor: 'rgba(244,244,242,0.12)' }}
           >
-            Watch Demo
+            Create My Profile
           </button>
         </TechBracket>
-        <button className="btn-dark">Learn More</button>
+        <button className="btn-dark">Join as a Coach or Club</button>
       </div>
     </section>
   )

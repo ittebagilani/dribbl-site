@@ -27,7 +27,7 @@ const Field = ({ label, type = 'text', placeholder, value, onChange, multiline =
             width: '100%',
             padding: '13px 16px',
             fontFamily: 'JetBrains Mono',
-            fontSize: 12,
+            fontSize: 14,
             color: '#F4F4F2',
             background: 'transparent',
             border: `1px solid ${focused ? 'rgba(255,0,64,0.35)' : 'rgba(255,255,255,0.1)'}`,
@@ -47,7 +47,7 @@ const Field = ({ label, type = 'text', placeholder, value, onChange, multiline =
 const InfoTile = ({ label, value }) => (
   <div style={{ borderBottom: '1px solid rgba(255,255,255,0.08)', padding: '20px 0' }}>
     <div style={{ fontFamily: 'JetBrains Mono', fontSize: 10, color: '#FF0040', letterSpacing: '0.12em', marginBottom: 6 }}>{label}</div>
-    <div style={{ fontFamily: 'JetBrains Mono', fontSize: 12, color: '#F4F4F2', letterSpacing: '0.04em' }}>{value}</div>
+    <div style={{ fontFamily: 'JetBrains Mono', fontSize: 14, color: '#F4F4F2', letterSpacing: '0.04em' }}>{value}</div>
   </div>
 )
 
@@ -81,10 +81,10 @@ const ContactPage = () => {
       {/* ── Hero ── */}
       <section ref={heroRef} style={{ background: '#0A0A0A', padding: isMobile ? '120px 24px 80px' : '160px 80px 100px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div className="overline" style={{ marginBottom: 24, ...fade(0) }}>// CONTACT</div>
-        <h1 style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 'clamp(36px, 5vw, 72px)', color: '#F4F4F2', letterSpacing: '-0.04em', lineHeight: 1.05, margin: '0 0 24px', ...fade(100) }}>
+        <h1 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(36px, 5vw, 72px)', color: '#F4F4F2', letterSpacing: '-0.04em', lineHeight: 1.05, margin: '0 0 24px', ...fade(100) }}>
           Let's talk.
         </h1>
-        <p style={{ fontFamily: 'JetBrains Mono', fontSize: 15, lineHeight: 1.9, color: 'rgba(244,244,242,0.4)', maxWidth: 500, margin: 0, letterSpacing: '0.02em', ...fade(200) }}>
+        <p style={{ fontFamily: 'JetBrains Mono', fontSize: 15, lineHeight: 1.9, color: 'rgba(244,244,242,0.6)', maxWidth: 500, margin: 0, letterSpacing: '0.02em', ...fade(200) }}>
           Whether you're a player, scout, club, or just curious — we want to hear from you.
         </p>
       </section>
@@ -100,10 +100,10 @@ const ContactPage = () => {
       }}>
         {/* Info column */}
         <div>
-          <h2 style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 'clamp(22px, 2.5vw, 32px)', color: '#F4F4F2', letterSpacing: '-0.03em', margin: '0 0 12px' }}>
+          <h2 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(22px, 2.5vw, 32px)', color: '#F4F4F2', letterSpacing: '-0.03em', margin: '0 0 12px' }}>
             Get in touch.
           </h2>
-          <p style={{ fontFamily: 'JetBrains Mono', fontSize: 13, lineHeight: 1.85, color: '#888884', margin: '0 0 40px', letterSpacing: '0.02em' }}>
+          <p style={{ fontFamily: 'JetBrains Mono', fontSize: 15, lineHeight: 1.85, color: 'rgba(244,244,242,0.65)', margin: '0 0 40px', letterSpacing: '0.02em' }}>
             We typically respond within 24 hours. For urgent matters, reach us directly by email.
           </p>
           <InfoTile label="// EMAIL" value="hello@dribbl.io" />
@@ -114,7 +114,7 @@ const ContactPage = () => {
             <div style={{ fontFamily: 'JetBrains Mono', fontSize: 10, color: '#FF0040', letterSpacing: '0.12em', marginBottom: 16 }}>// FOLLOW US</div>
             <div style={{ display: 'flex', gap: 12 }}>
               {['Twitter / X', 'Instagram', 'LinkedIn'].map((s) => (
-                <a key={s} href="#" style={{ fontFamily: 'JetBrains Mono', fontSize: 10, color: '#888884', textDecoration: 'none', letterSpacing: '0.06em', transition: 'color 0.2s' }}
+                <a key={s} href="#" style={{ fontFamily: 'JetBrains Mono', fontSize: 10, color: 'rgba(244,244,242,0.65)', textDecoration: 'none', letterSpacing: '0.06em', transition: 'color 0.2s' }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = '#F4F4F2')}
                   onMouseLeave={(e) => (e.currentTarget.style.color = '#888884')}
                 >
@@ -150,10 +150,10 @@ const ContactPage = () => {
           ) : (
             <div style={{ padding: '40px 32px', border: '1px solid rgba(255,0,64,0.2)', background: 'rgba(255,0,64,0.03)' }}>
               <div className="overline" style={{ marginBottom: 16 }}>// MESSAGE RECEIVED</div>
-              <h3 style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 26, color: '#F4F4F2', letterSpacing: '-0.03em', margin: '0 0 12px' }}>
+              <h3 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 26, color: '#F4F4F2', letterSpacing: '-0.03em', margin: '0 0 12px' }}>
                 We'll be in touch.
               </h3>
-              <p style={{ fontFamily: 'JetBrains Mono', fontSize: 13, lineHeight: 1.85, color: '#888884', margin: 0, letterSpacing: '0.02em' }}>
+              <p style={{ fontFamily: 'JetBrains Mono', fontSize: 15, lineHeight: 1.85, color: 'rgba(244,244,242,0.65)', margin: 0, letterSpacing: '0.02em' }}>
                 Thank you for reaching out, {form.name.split(' ')[0]}. Expect a response within 24 hours.
               </p>
             </div>

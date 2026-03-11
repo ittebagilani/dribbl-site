@@ -29,9 +29,9 @@ const DiamondLogo = ({ size = 28 }) => (
 )
 
 const navRoutes = {
-  // 'Home':        '/',
-  'Explore App': '/',
-  'About':       '/about',
+  'About':   '/about',
+  'Team':    '/team',
+  'Contact': '/contact',
 }
 
 const NavLink = ({ label, to, onClick }) => {
@@ -46,7 +46,7 @@ const NavLink = ({ label, to, onClick }) => {
       onMouseLeave={() => setHovered(false)}
       style={{
         fontFamily: 'JetBrains Mono, monospace',
-        fontSize: 12,
+        fontSize: 14,
         textDecoration: 'none',
         letterSpacing: '0.04em',
         color: '#F4F4F2',
@@ -136,14 +136,14 @@ const MobileMenu = ({ open, onClose }) => (
       transition: 'opacity 0.3s ease',
     }}
   >
-    {[ ['Explore App', '/'], ['About', '/about'], ['Team', '/team'], ['Contact', '/contact']].map(([label, to], i) => (
+    {[['About', '/about'], ['Team', '/team'], ['Contact', '/contact']].map(([label, to], i) => (
       <Link
         key={label}
         to={to}
         onClick={onClose}
         style={{
-          fontFamily: 'Space Grotesk, sans-serif',
-          fontWeight: 600,
+          fontFamily: 'Inter, sans-serif',
+          fontWeight: 800,
           fontSize: 32,
           color: '#F4F4F2',
           textDecoration: 'none',
@@ -252,30 +252,25 @@ const Navbar = () => {
           }}
         >
           {/* ── Logo ── */}
-          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 9, textDecoration: 'none' }}>
-            <DiamondLogo size={scrolled ? 22 : 28} />
-            <span
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+            <img
+              src="/images/Dribbl-banner.png"
+              alt="Dribbl"
               style={{
-                fontFamily: 'Space Grotesk, sans-serif',
-                fontWeight: 700,
-                fontSize: scrolled ? 16 : 19,
-                color: '#F4F4F2',
-                letterSpacing: '-0.03em',
-                transition: 'font-size 0.35s ease',
+                height: scrolled ? 28 : 36,
+                width: 'auto',
+                objectFit: 'contain',
+                transition: 'height 0.35s ease',
               }}
-            >
-              Dribbl
-            </span>
+            />
           </Link>
 
           {/* ── Desktop Nav Links ── */}
           {!isMobile && (
             <div style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
-              {/* <NavLink label="Home"        to="/" /> */}
-              <NavLink label="Explore App" to="/" />
-              <NavLink label="About"       to="/about" />
-              <NavLink label="Team"        to="/team" />
-              <NavLink label="Contact"     to="/contact" />
+              <NavLink label="About"   to="/about" />
+              <NavLink label="Team"    to="/team" />
+              <NavLink label="Contact" to="/contact" />
             </div>
           )}
 
@@ -287,7 +282,7 @@ const Navbar = () => {
                   style={{
                     fontFamily: 'JetBrains Mono, monospace',
                     fontSize: 11,
-                    color: 'rgba(244,244,242,0.35)',
+                    color: 'rgba(244,244,242,0.55)',
                     letterSpacing: '0.08em',
                   }}
                 >

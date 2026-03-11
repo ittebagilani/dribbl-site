@@ -136,10 +136,10 @@ const ValueCard = ({ title, desc, index }) => {
           <div style={{ fontFamily: 'JetBrains Mono', fontSize: 10, color: '#FF0040', letterSpacing: '0.14em', marginBottom: 14 }}>
             {String(index + 1).padStart(2, '0')}
           </div>
-          <h3 style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 18, color: '#F4F4F2', letterSpacing: '-0.02em', margin: '0 0 12px' }}>
+          <h3 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 18, color: '#F4F4F2', letterSpacing: '-0.02em', margin: '0 0 12px' }}>
             {title}
           </h3>
-          <p style={{ fontFamily: 'JetBrains Mono', fontSize: 13, lineHeight: 1.85, color: '#888884', margin: 0, letterSpacing: '0.02em' }}>
+          <p style={{ fontFamily: 'JetBrains Mono', fontSize: 15, lineHeight: 1.85, color: 'rgba(244,244,242,0.65)', margin: 0, letterSpacing: '0.02em' }}>
             {desc}
           </p>
         </div>
@@ -182,8 +182,8 @@ const AboutPage = () => {
             // ABOUT DRIBBL
           </div>
           <h1 style={{
-            fontFamily: 'Space Grotesk',
-            fontWeight: 700,
+            fontFamily: 'Inter',
+            fontWeight: 800,
             fontSize: 'clamp(36px, 5vw, 72px)',
             color: '#F4F4F2',
             letterSpacing: '-0.04em',
@@ -197,7 +197,7 @@ const AboutPage = () => {
             fontFamily: 'JetBrains Mono',
             fontSize: 15,
             lineHeight: 1.9,
-            color: 'rgba(244,244,242,0.45)',
+            color: 'rgba(244,244,242,0.65)',
             maxWidth: 560,
             margin: 0,
             letterSpacing: '0.02em',
@@ -224,11 +224,11 @@ const AboutPage = () => {
       >
         <div style={fade(missionVisible, 0)}>
           <div className="overline" style={{ marginBottom: 20 }}>// OUR MISSION</div>
-          <h2 style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 'clamp(28px, 3.5vw, 48px)', color: '#F4F4F2', letterSpacing: '-0.035em', margin: 0, lineHeight: 1.1 }}>
+          <h2 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(28px, 3.5vw, 48px)', color: '#F4F4F2', letterSpacing: '-0.035em', margin: 0, lineHeight: 1.1 }}>
             No barrier should stand between talent and opportunity.
           </h2>
         </div>
-        <p style={{ fontFamily: 'JetBrains Mono', fontSize: 14, lineHeight: 1.95, color: '#888884', margin: 0, letterSpacing: '0.02em', ...fade(missionVisible, 150) }}>
+        <p style={{ fontFamily: 'JetBrains Mono', fontSize: 14, lineHeight: 1.95, color: 'rgba(244,244,242,0.65)', margin: 0, letterSpacing: '0.02em', ...fade(missionVisible, 150) }}>
           To democratize soccer scouting by creating the world's most advanced AI-powered
           platform that connects talented players with clubs and scouts, ensuring no exceptional
           talent goes undiscovered regardless of geographical or financial barriers.
@@ -249,10 +249,10 @@ const AboutPage = () => {
           borderBottom: isMobile ? 'none' : 'none',
         }}>
           <div className="overline" style={{ marginBottom: 20 }}>// AI-POWERED SCOUTING</div>
-          <h3 style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 'clamp(22px, 2.5vw, 32px)', color: '#F4F4F2', letterSpacing: '-0.03em', margin: '0 0 16px' }}>
+          <h3 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(22px, 2.5vw, 32px)', color: '#F4F4F2', letterSpacing: '-0.03em', margin: '0 0 16px' }}>
             Computer vision that sees what scouts miss.
           </h3>
-          <p style={{ fontFamily: 'JetBrains Mono', fontSize: 13, lineHeight: 1.9, color: 'rgba(244,244,242,0.4)', margin: 0, letterSpacing: '0.02em' }}>
+          <p style={{ fontFamily: 'JetBrains Mono', fontSize: 15, lineHeight: 1.9, color: 'rgba(244,244,242,0.6)', margin: 0, letterSpacing: '0.02em' }}>
             Using cutting-edge computer vision to analyze player technique, movement patterns,
             and untapped potential — generating 200+ data points per session in real time.
           </p>
@@ -261,10 +261,10 @@ const AboutPage = () => {
         {/* Global Card */}
         <div style={{ background: 'var(--dark)', padding: isMobile ? '60px 24px' : '80px 60px' }}>
           <div className="overline" style={{ marginBottom: 20 }}>// GLOBAL CONNECTION</div>
-          <h3 style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 'clamp(22px, 2.5vw, 32px)', color: '#F4F4F2', letterSpacing: '-0.03em', margin: '0 0 16px' }}>
+          <h3 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(22px, 2.5vw, 32px)', color: '#F4F4F2', letterSpacing: '-0.03em', margin: '0 0 16px' }}>
             From Lagos to Tokyo. Every talent, every scout.
           </h3>
-          <p style={{ fontFamily: 'JetBrains Mono', fontSize: 13, lineHeight: 1.9, color: '#888884', margin: 0, letterSpacing: '0.02em' }}>
+          <p style={{ fontFamily: 'JetBrains Mono', fontSize: 15, lineHeight: 1.9, color: 'rgba(244,244,242,0.65)', margin: 0, letterSpacing: '0.02em' }}>
             Bridging the gap between talented players and scouts across 140+ countries.
             No gatekeepers. No geography. Just talent meeting opportunity.
           </p>
@@ -274,7 +274,7 @@ const AboutPage = () => {
       {/* ── Analysis canvas ── */}
       <section style={{ background: '#0A0A0A', padding: isMobile ? '60px 24px' : '80px 80px' }}>
         <div className="overline" style={{ marginBottom: 20 }}>// ANALYSIS VISUALIZATION</div>
-        <h2 style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 'clamp(24px, 3vw, 40px)', color: '#F4F4F2', letterSpacing: '-0.03em', margin: '0 0 48px' }}>
+        <h2 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(24px, 3vw, 40px)', color: '#F4F4F2', letterSpacing: '-0.03em', margin: '0 0 48px' }}>
           Coming Soon.
         </h2>
         <TechBracket color="#FF0040" size={12} style={{ display: 'block' }}>
@@ -295,7 +295,7 @@ const AboutPage = () => {
       {/* ── Values ── */}
       <section style={{ background: 'var(--dark)', padding: isMobile ? '72px 24px' : '100px 80px' }}>
         <div className="overline" style={{ marginBottom: 20 }}>// OUR VALUES</div>
-        <h2 style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 'clamp(28px, 3.5vw, 48px)', color: '#F4F4F2', letterSpacing: '-0.035em', margin: '0 0 60px', maxWidth: 500 }}>
+        <h2 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(28px, 3.5vw, 48px)', color: '#F4F4F2', letterSpacing: '-0.035em', margin: '0 0 60px', maxWidth: 500 }}>
           These core principles guide everything we do.
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: isMobile ? 12 : 2 }}>

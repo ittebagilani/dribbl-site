@@ -41,7 +41,7 @@ const HudLabel = ({ label, value, position }) => {
           <div
             style={{
               fontFamily: 'JetBrains Mono, monospace',
-              fontSize: 13,
+              fontSize: 14,
               color: '#F4F4F2',
               fontWeight: 600,
               letterSpacing: '0.04em',

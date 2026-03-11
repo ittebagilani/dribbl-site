@@ -64,14 +64,14 @@ const WaitlistSection = () => {
       <div style={{ position: 'relative', zIndex: 1, width: '100%', maxWidth: 640 }}>
         {/* Overline */}
         <div className="overline" style={{ marginBottom: 20, ...fade(0) }}>
-          // EARLY ACCESS
+          // JOIN DRIBBL FOR FREE
         </div>
 
         {/* Heading */}
         <h2
           style={{
-            fontFamily: 'Space Grotesk, sans-serif',
-            fontWeight: 700,
+            fontFamily: 'Inter, sans-serif',
+            fontWeight: 800,
             fontSize: 'clamp(34px, 4vw, 60px)',
             color: '#F4F4F2',
             letterSpacing: '-0.04em',
@@ -80,7 +80,7 @@ const WaitlistSection = () => {
             ...fade(100),
           }}
         >
-          Be first to experience Dribbl.
+          Your Network is Waiting.
         </h2>
 
         {/* Subtext */}
@@ -89,94 +89,36 @@ const WaitlistSection = () => {
             fontFamily: 'JetBrains Mono, monospace',
             fontSize: 14,
             lineHeight: 1.9,
-            color: '#888884',
+            color: 'rgba(244,244,242,0.65)',
             margin: '0 0 48px',
             letterSpacing: '0.02em',
             ...fade(200),
           }}
         >
-          Join our early access list to be among the first players, coaches, and
-          scouts to experience how we are changing the game.
+          Join Dribbl for free and start building the profile that gets you noticed.
         </p>
 
-        {/* Form */}
-        {!submitted ? (
-          <form
-            onSubmit={handleSubmit}
-            style={{
-              display: 'flex',
-              flexDirection: isMobile ? 'column' : 'row',
-              gap: isMobile ? 10 : 0,
-              marginBottom: 20,
-              ...fade(300),
-            }}
-          >
-            <TechBracket
-              color={focused ? '#FF0040' : 'rgba(255,255,255,0.2)'}
-              size={10}
-              style={{
-                flex: 1,
-                display: 'block',
-                transition: 'all 0.25s',
-              }}
-            >
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                onFocus={() => setFocused(true)}
-                onBlur={() => setFocused(false)}
-                placeholder="your@email.com"
-                required
-                style={{
-                  width: '100%',
-                  padding: '14px 20px',
-                  fontFamily: 'JetBrains Mono, monospace',
-                  fontSize: 12,
-                  letterSpacing: '0.04em',
-                  color: '#F4F4F2',
-                  background: 'transparent',
-                  border: '1px solid rgba(255,255,255,0.12)',
-                  outline: 'none',
-                  transition: 'border-color 0.2s',
-                  borderColor: focused ? 'rgba(255,0,64,0.5)' : 'rgba(255,255,255,0.12)',
-                }}
-              />
-            </TechBracket>
-
-            <button
-              type="submit"
-              className="btn-dark"
-              style={{
-                flexShrink: 0,
-                padding: '14px 32px',
-              }}
-            >
-              Join Waitlist
+        {/* CTAs */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: isMobile ? 'column' : 'row',
+            gap: 16,
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginBottom: 24,
+            ...fade(300),
+          }}
+        >
+          <TechBracket color="#FF0040" size={10}>
+            <button className="btn-glass" style={{ padding: '14px 32px' }}>
+              Create My Profile
             </button>
-          </form>
-        ) : (
-          <div
-            style={{
-              marginBottom: 20,
-              padding: '20px 32px',
-              border: '1px solid rgba(255,0,64,0.3)',
-              background: 'rgba(255,0,64,0.04)',
-              ...fade(0),
-            }}
-          >
-            <span
-              style={{
-                fontFamily: 'JetBrains Mono, monospace',
-                fontSize: 12,
-                color: '#FF0040',
-                letterSpacing: '0.06em',
-              }}
-            >
-              // ACCESS GRANTED — you&apos;re on the list.
-            </span>
-          </div>
-        )}
+          </TechBracket>
+          <button className="btn-dark" style={{ padding: '14px 32px' }}>
+            Join as a Coach or Club
+          </button>
+        </div>
 
         {/* Fine print */}
         <p
@@ -189,7 +131,7 @@ const WaitlistSection = () => {
             ...fade(400),
           }}
         >
-          No spam, ever. Unsubscribe at any time.
+          Free to join. No credit card required.
         </p>
       </div>
     </section>

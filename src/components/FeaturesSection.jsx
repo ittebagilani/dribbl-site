@@ -47,27 +47,51 @@ const IconPortfolio = () => (
 const features = [
   {
     Icon: IconPlayer,
-    title: 'Player Showcase',
-    desc: 'Upload highlights, training videos, and match footage directly to your professional profile. Your story, told in full motion.',
-  },
-  {
-    Icon: IconAI,
-    title: 'AI Stats Visualization',
-    desc: 'Computer vision tracks movement patterns, generates interactive dashboards and professional statistics scouts trust.',
+    title: 'For Players',
+    subtitle: 'Show the World What You\'ve Got.',
+    desc: 'Your Dribbl profile is your soccer identity — built by you, seen by everyone that matters. Document your journey, share highlights, and get seen by coaches and scouts around the clock.',
+    bullets: [
+      'Build a complete profile with club history and positions',
+      'Upload match highlights and career footage',
+      'Connect with teammates and players in your area',
+    ],
   },
   {
     Icon: IconScout,
-    title: 'Scout Access',
-    desc: 'Connect directly with professional scouts and clubs worldwide. No agents, no gatekeepers — pure talent-to-opportunity pipeline.',
+    title: 'For Coaches & Scouts',
+    subtitle: 'Find Your Next Player. Right Here.',
+    desc: 'A recruitment dashboard built around how coaches actually work. Browse real profiles, watch footage, and reach out directly — no middlemen, no wasted time.',
+    bullets: [
+      'Search and filter players by age, position, and location',
+      'Review profiles and highlight reels',
+      'Message and recruit players directly',
+    ],
   },
   {
     Icon: IconPortfolio,
-    title: 'Digital Portfolio',
-    desc: 'Build a verified soccer resume with stats, videos, and coach endorsements. A living document that evolves with your game.',
+    title: 'For Clubs & Academies',
+    subtitle: 'Give Your Players the Platform They Deserve.',
+    desc: 'Create a club profile on Dribbl and put your academy on the map. Showcase your players, attract attention from coaches and scouts, and build your reputation.',
+    bullets: [
+      'Create a verified club or academy profile',
+      'Showcase your roster and player profiles',
+      'Attract coaches and scouts to your talent',
+    ],
+  },
+  {
+    Icon: IconAI,
+    title: 'Built for Everyone in the Game',
+    subtitle: 'One Platform. Every Role.',
+    desc: 'Whether you\'re a player chasing your next opportunity, a coach looking for talent, or a club building your presence — Dribbl has a place for you.',
+    bullets: [
+      'Players aged 14–U23 growing their soccer identity',
+      'Coaches accessing a growing network of talent',
+      'Clubs building community reputation',
+    ],
   },
 ]
 
-const FeatureCard = ({ Icon, title, desc, delay, visible }) => {
+const FeatureCard = ({ Icon, title, subtitle, desc, bullets, delay, visible }) => {
   const [hovered, setHovered] = React.useState(false)
   return (
     <div
@@ -99,30 +123,71 @@ const FeatureCard = ({ Icon, title, desc, delay, visible }) => {
           <div style={{ marginBottom: 20 }}>
             <Icon />
           </div>
+          <div
+            style={{
+              fontFamily: 'JetBrains Mono, monospace',
+              fontSize: 9,
+              color: '#FF0040',
+              letterSpacing: '0.14em',
+              marginBottom: 8,
+            }}
+          >
+            {title.toUpperCase()}
+          </div>
           <h3
             style={{
-              fontFamily: 'Space Grotesk, sans-serif',
-              fontWeight: 700,
-              fontSize: 20,
+              fontFamily: 'Inter, sans-serif',
+              fontWeight: 800,
+              fontSize: 18,
               color: '#F4F4F2',
               letterSpacing: '-0.02em',
               margin: '0 0 14px',
+              lineHeight: 1.2,
             }}
           >
-            {title}
+            {subtitle}
           </h3>
           <p
             style={{
               fontFamily: 'JetBrains Mono, monospace',
-              fontSize: 13,
+              fontSize: 14,
               lineHeight: 1.9,
-              color: 'rgba(244,244,242,0.45)',
-              margin: 0,
+              color: 'rgba(244,244,242,0.65)',
+              margin: '0 0 18px',
               letterSpacing: '0.02em',
             }}
           >
             {desc}
           </p>
+          <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
+            {bullets.map((b) => (
+              <li
+                key={b}
+                style={{
+                  fontFamily: 'JetBrains Mono, monospace',
+                  fontSize: 11,
+                  color: 'rgba(244,244,242,0.55)',
+                  letterSpacing: '0.02em',
+                  lineHeight: 1.7,
+                  paddingLeft: 14,
+                  position: 'relative',
+                  marginBottom: 4,
+                }}
+              >
+                <span
+                  style={{
+                    position: 'absolute',
+                    left: 0,
+                    color: '#FF0040',
+                    fontWeight: 800,
+                  }}
+                >
+                  —
+                </span>
+                {b}
+              </li>
+            ))}
+          </ul>
         </div>
       </TechBracket>
     </div>
@@ -162,22 +227,36 @@ const FeaturesSection = () => {
       {/* Header */}
       <div style={{ marginBottom: isMobile ? 40 : 72, maxWidth: 640 }}>
         <div className="overline reveal delay-1" style={{ marginBottom: 20 }}>
-          // PLATFORM CAPABILITIES
+          // THE PLATFORM
         </div>
         <h2
           className="reveal delay-2"
           style={{
-            fontFamily: 'Space Grotesk, sans-serif',
-            fontWeight: 700,
+            fontFamily: 'Inter, sans-serif',
+            fontWeight: 800,
             fontSize: 'clamp(30px, 4vw, 58px)',
             color: '#F4F4F2',
             letterSpacing: '-0.035em',
-            margin: 0,
+            margin: '0 0 16px',
             lineHeight: 1.05,
           }}
         >
-          Everything a scout needs.
+          Where Players, Coaches, and Clubs Connect.
         </h2>
+        <p
+          className="reveal delay-2"
+          style={{
+            fontFamily: 'JetBrains Mono, monospace',
+            fontSize: 14,
+            lineHeight: 1.85,
+            color: 'rgba(244,244,242,0.65)',
+            margin: 0,
+            maxWidth: 560,
+            letterSpacing: '0.02em',
+          }}
+        >
+          Dribbl brings together the people that make soccer happen — all on one platform.
+        </p>
       </div>
 
       {/* Grid */}

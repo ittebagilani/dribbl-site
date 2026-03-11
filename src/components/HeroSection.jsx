@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react'
 import TechBracket from './TechBracket'
-import ParticleCanvas from './ParticleCanvas'
 import { useBreakpoint } from '../hooks/useBreakpoint'
 
 /* ─────────────────────────────────────────────────────────
@@ -185,8 +184,8 @@ const StatsRow = ({ mobile = false }) => (
         >
           <div
             style={{
-              fontFamily: 'Space Grotesk, sans-serif',
-              fontWeight: 700,
+              fontFamily: 'Inter, sans-serif',
+              fontWeight: 800,
               fontSize: mobile ? 22 : 26,
               color: '#F4F4F2',
               letterSpacing: '-0.03em',
@@ -200,7 +199,7 @@ const StatsRow = ({ mobile = false }) => (
             style={{
               fontFamily: 'JetBrains Mono, monospace',
               fontSize: 9,
-              color: '#888884',
+              color: 'rgba(244,244,242,0.65)',
               letterSpacing: '0.14em',
             }}
           >
@@ -217,7 +216,7 @@ const StatsRow = ({ mobile = false }) => (
 ───────────────────────────────────────────────────────── */
 const HeroSection = () => {
   const [mounted, setMounted] = useState(false)
-  const { isMobile, isTablet } = useBreakpoint()
+  const { isTablet } = useBreakpoint()
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 80)
@@ -230,13 +229,13 @@ const HeroSection = () => {
     transition: `opacity 0.8s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.8s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
   })
 
-  const hPad = isMobile ? '28px 24px 24px' : isTablet ? '0 36px 120px' : '0 60px 120px'
+  const hPad = isTablet ? '28px 24px 24px' : '0 60px 120px'
 
   return (
     <section
       style={{
         display: 'flex',
-        flexDirection: isMobile ? 'column' : 'row',
+        flexDirection: isTablet ? 'column' : 'row',
         width: '100vw',
         minHeight: '100vh',
         paddingTop: 64,
@@ -247,76 +246,76 @@ const HeroSection = () => {
       {/* ── Left / Top Pane ── */}
       <div
         style={{
-          flex: isMobile ? 'none' : '0 0 50%',
+          flex: isTablet ? 'none' : '0 0 50%',
           position: 'relative',
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: isMobile ? 'flex-start' : 'center',
+          justifyContent: isTablet ? 'flex-start' : 'center',
           padding: hPad,
-          borderRight: isMobile ? 'none' : '1px solid rgba(255,255,255,0.08)',
+          borderRight: isTablet ? 'none' : '1px solid rgba(255,255,255,0.08)',
           overflow: 'hidden',
           background: 'var(--dark)',
-          paddingBottom: isMobile ? '0' : undefined,
+          paddingBottom: isTablet ? '0' : undefined,
         }}
       >
-        {!isMobile && <PitchCanvas />}
+        {!isTablet && <PitchCanvas />}
 
         {/* Text content */}
         <div
           style={{
             position: 'relative',
             zIndex: 2,
-            maxWidth: isMobile ? '100%' : 560,
+            maxWidth: isTablet ? '100%' : 560,
           }}
         >
           <div
             className="overline"
-            style={{ marginBottom: isMobile ? 16 : 24, ...fade(0) }}
+            style={{ marginBottom: isTablet ? 16 : 24, ...fade(0) }}
           >
-            // REVOLUTIONIZING SOCCER SCOUTING
+            // WELCOME TO DRIBBL
           </div>
 
           <h1
             style={{
-              fontFamily: 'Space Grotesk, sans-serif',
+              fontFamily: 'Inter, sans-serif',
               margin: 0,
               lineHeight: 1.05,
-              marginBottom: isMobile ? 18 : 28,
+              marginBottom: isTablet ? 18 : 28,
               ...fade(100),
             }}
           >
             <span
               style={{
                 display: 'block',
-                fontWeight: 600,
-                fontSize: isMobile ? 'clamp(38px, 11vw, 56px)' : 'clamp(40px, 5vw, 80px)',
+                fontWeight: 800,
+                fontSize: isTablet ? 'clamp(38px, 11vw, 56px)' : 'clamp(40px, 5vw, 80px)',
                 color: '#F4F4F2',
                 letterSpacing: '-0.04em',
               }}
             >
-              No exceptional
+              Your Journey.
             </span>
             <span
               style={{
                 display: 'block',
-                fontWeight: 600,
-                fontSize: isMobile ? 'clamp(38px, 11vw, 56px)' : 'clamp(40px, 5vw, 80px)',
+                fontWeight: 800,
+                fontSize: isTablet ? 'clamp(38px, 11vw, 56px)' : 'clamp(40px, 5vw, 80px)',
                 color: '#F4F4F2',
                 letterSpacing: '-0.04em',
               }}
             >
-              talent goes
+              Your Game.
             </span>
             <span
               style={{
                 display: 'block',
-                fontWeight: 600,
-                fontSize: isMobile ? 'clamp(38px, 11vw, 56px)' : 'clamp(40px, 5vw, 80px)',
-                color: '#F4F4F2',
+                fontWeight: 800,
+                fontSize: isTablet ? 'clamp(38px, 11vw, 56px)' : 'clamp(40px, 5vw, 80px)',
+                color: '#FF0040',
                 letterSpacing: '-0.04em',
               }}
             >
-              undiscovered.
+              Your Network.
             </span>
           </h1>
 
@@ -325,16 +324,15 @@ const HeroSection = () => {
               fontFamily: 'JetBrains Mono, monospace',
               fontSize: 14,
               lineHeight: 1.85,
-              color: '#888884',
-              marginBottom: isMobile ? 28 : 40,
-              maxWidth: isMobile ? '100%' : 440,
+              color: 'rgba(244,244,242,0.65)',
+              marginBottom: isTablet ? 28 : 40,
+              maxWidth: isTablet ? '100%' : 440,
               letterSpacing: '0.02em',
               ...fade(200),
             }}
           >
-            Dribbl connects talented players with clubs and scouts worldwide.
-            Upload your highlights, receive AI-analyzed performance stats, and
-            build a digital scouting profile that gets you noticed.
+            Dribbl is where soccer players showcase their story, connect with
+            teammates, and get discovered by coaches and clubs — all in one place.
           </p>
 
           <div
@@ -347,32 +345,44 @@ const HeroSection = () => {
             }}
           >
             <TechBracket color="#FF0040" size={10}>
-              <button className="btn-glass">Explore App</button>
+              <button className="btn-glass">Create Your Profile</button>
             </TechBracket>
-            <button className="btn-dark">Watch Demo</button>
+            <button className="btn-dark">Join as a Coach or Club</button>
           </div>
         </div>
 
-        {/* Stats — desktop: absolute at bottom; mobile: inline below */}
-        {!isMobile && <StatsRow mobile={false} />}
+        {/* Stats — desktop only, inline below text */}
+        {!isTablet && <StatsRow mobile={false} />}
       </div>
 
-      {/* ── Right Pane — Particle Canvas (desktop only) ── */}
-      {!isMobile && (
-        <div
+      {/* ── Video Pane — full height on desktop, fixed height block on tablet/mobile ── */}
+      <div
+        style={{
+          flex: isTablet ? 'none' : '0 0 50%',
+          position: 'relative',
+          overflow: 'hidden',
+          background: '#000',
+          height: isTablet ? '56vw' : undefined,
+        }}
+      >
+        <video
+          src="/videos/hero-vid.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
           style={{
-            flex: '0 0 50%',
-            position: 'relative',
-            overflow: 'hidden',
-            background: '#000',
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
           }}
-        >
-          <ParticleCanvas />
-        </div>
-      )}
+        />
+      </div>
 
-      {/* ── Stats — mobile only, below text content ── */}
-      {isMobile && <StatsRow mobile={true} />}
+      {/* ── Stats — tablet/mobile, below video ── */}
+      {isTablet && <StatsRow mobile={true} />}
     </section>
   )
 }

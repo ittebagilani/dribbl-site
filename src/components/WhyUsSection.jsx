@@ -4,21 +4,21 @@ import { useBreakpoint } from '../hooks/useBreakpoint'
 const statements = [
   {
     num: '01',
-    headline: 'Revolutionizing scouting analysis and player statistics.',
+    headline: 'A social and recruitment platform built exclusively for soccer.',
     detail:
-      'Our AI processes match footage in 0.01 seconds — generating professional-grade stats that rival what top clubs pay millions for.',
+      'Players create profiles, share their journey, and connect with coaches, teammates, and clubs. Coaches and scouts use our dashboard to discover and recruit talent directly.',
   },
   {
     num: '02',
-    headline: 'Finding the next generational talent who might otherwise be overlooked.',
+    headline: 'Simple. Focused. Built for the game.',
     detail:
-      'From regional leagues in Lagos to amateur pitches in Bogota — no exceptional talent goes undiscovered on Dribbl.',
+      'Clubs and academies showcase their players to the wider soccer community. Every feature on Dribbl exists to serve the people who live the sport.',
   },
   {
     num: '03',
-    headline: 'Connecting talented players with clubs and opportunities worldwide.',
+    headline: 'Because no other platform was built with soccer players at the centre.',
     detail:
-      '140+ countries. 50,000+ registered players. A direct line between raw ability and the clubs that need it most.',
+      "Dribbl isn't an afterthought — it's built from the ground up for the sport and the people who live it.",
   },
 ]
 
@@ -81,8 +81,8 @@ const StatementRow = ({ num, headline, detail, index }) => {
       <div style={{ gridColumn: isMobile ? '2' : undefined }}>
         <h3
           style={{
-            fontFamily: 'Space Grotesk, sans-serif',
-            fontWeight: 600,
+            fontFamily: 'Inter, sans-serif',
+            fontWeight: 800,
             fontSize: isMobile ? 'clamp(18px, 5vw, 26px)' : 'clamp(22px, 2.4vw, 34px)',
             color: '#F4F4F2',
             letterSpacing: '-0.025em',
@@ -96,9 +96,9 @@ const StatementRow = ({ num, headline, detail, index }) => {
           <p
             style={{
               fontFamily: 'JetBrains Mono, monospace',
-              fontSize: 13,
+              fontSize: 14,
               lineHeight: 1.85,
-              color: '#888884',
+              color: 'rgba(244,244,242,0.65)',
               margin: 0,
               letterSpacing: '0.02em',
             }}
@@ -115,7 +115,7 @@ const StatementRow = ({ num, headline, detail, index }) => {
             fontFamily: 'JetBrains Mono, monospace',
             fontSize: 14,
             lineHeight: 1.85,
-            color: '#888884',
+            color: 'rgba(244,244,242,0.65)',
             margin: 0,
             letterSpacing: '0.02em',
           }}
@@ -159,19 +159,19 @@ const WhyUsSection = () => {
         }}
       >
         <div className="overline" style={{ marginBottom: 16 }}>
-          // WHY DRIBBL
+          // WHO WE ARE
         </div>
         <h2
           style={{
-            fontFamily: 'Space Grotesk, sans-serif',
-            fontWeight: 700,
+            fontFamily: 'Inter, sans-serif',
+            fontWeight: 800,
             fontSize: 'clamp(32px, 3.5vw, 52px)',
             color: '#F4F4F2',
             letterSpacing: '-0.035em',
             margin: 0,
           }}
         >
-          The platform the sport was missing.
+          We Built the Network Soccer Was Missing.
         </h2>
       </div>
 
