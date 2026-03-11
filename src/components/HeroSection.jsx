@@ -216,7 +216,7 @@ const StatsRow = ({ mobile = false }) => (
 ───────────────────────────────────────────────────────── */
 const HeroSection = () => {
   const [mounted, setMounted] = useState(false)
-  const { isTablet } = useBreakpoint()
+  const { isMobile, isTablet } = useBreakpoint()
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 80)
@@ -362,7 +362,8 @@ const HeroSection = () => {
           position: 'relative',
           overflow: 'hidden',
           background: '#000',
-          height: isTablet ? '56vw' : undefined,
+          height: isMobile ? '80vw' : isTablet ? '56vw' : undefined,
+          marginTop: isTablet ? 40 : undefined,
         }}
       >
         <video
