@@ -22,46 +22,31 @@ const statements = [
   },
 ]
 
+const NAVBAR_H = 200
+const STACK_OFFSET = 8 // px each card peeks above the previous
+
 const StatementRow = ({ num, headline, detail, index }) => {
-  const rowRef = useRef(null)
-  const [visible, setVisible] = useState(false)
   const [hovered, setHovered] = useState(false)
   const { isMobile } = useBreakpoint()
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true)
-          observer.unobserve(entry.target)
-        }
-      },
-      { threshold: 0.1 },
-    )
-    if (rowRef.current) observer.observe(rowRef.current)
-    return () => observer.disconnect()
-  }, [])
-
   return (
     <div
-      ref={rowRef}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
+        position: 'sticky',
+        top: NAVBAR_H + index * STACK_OFFSET,
         display: 'grid',
         gridTemplateColumns: isMobile ? '36px 1fr' : '64px 1fr 1fr',
         alignItems: isMobile ? 'start' : 'center',
         gap: isMobile ? '0 16px' : '0 48px',
         padding: isMobile ? '32px 24px' : '48px 80px',
         borderBottom: '1px solid rgba(255,255,255,0.08)',
-        background: hovered ? 'rgba(255,0,64,0.03)' : 'transparent',
-        transition: 'background 0.4s ease',
-        opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0)' : 'translateY(24px)',
-        transitionDelay: `${index * 0.12}s`,
-        transitionProperty: 'opacity, transform, background',
-        transitionDuration: '0.75s, 0.75s, 0.4s',
-        transitionTimingFunction: 'cubic-bezier(0.16,1,0.3,1), cubic-bezier(0.16,1,0.3,1), ease',
+        borderTop: index > 0 ? '1px solid rgba(255,255,255,0.08)' : 'none',
+        background: hovered ? 'rgba(20,20,20,1)' : 'rgba(14,14,14,1)',
+        boxShadow: '0 -4px 24px rgba(0,0,0,0.4)',
+        transition: 'background 0.3s ease',
+        zIndex: index + 1,
       }}
     >
       {/* Number */}
@@ -146,7 +131,7 @@ const WhyUsSection = () => {
   }, [])
 
   return (
-    <section style={{ background: 'var(--dark)' }}>
+    <section style={{ background: 'var(--dark)', position: 'relative' }}>
       {/* Header */}
       <div
         ref={headerRef}
