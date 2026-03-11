@@ -34,10 +34,14 @@ html {
 }
 
 body {
-  background: var(--offwhite);
+  background: var(--dark);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+::placeholder {
+  color: rgba(255,255,255,0.3) !important;
 }
 
 /* ── Custom Scrollbar ────────────────────────────────── */
@@ -121,7 +125,7 @@ body {
 
 /* ── Frosted Glass Utility ───────────────────────────── */
 .glass {
-  background: rgba(244, 244, 242, 0.12);
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
@@ -163,18 +167,18 @@ body {
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
   letter-spacing: 0.06em;
-  background: rgba(244, 244, 242, 0.14);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  color: var(--dark);
-  border: 1px solid rgba(10, 10, 10, 0.12);
+  color: #F4F4F2;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   padding: 12px 28px;
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
 }
 .btn-glass:hover {
-  background: rgba(244, 244, 242, 0.28);
-  border-color: rgba(10, 10, 10, 0.24);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 /* ── Overline ────────────────────────────────────────── */

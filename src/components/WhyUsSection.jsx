@@ -53,7 +53,7 @@ const StatementRow = ({ num, headline, detail, index }) => {
         alignItems: isMobile ? 'start' : 'center',
         gap: isMobile ? '0 16px' : '0 48px',
         padding: isMobile ? '32px 24px' : '48px 80px',
-        borderBottom: '1px solid rgba(10,10,10,0.1)',
+        borderBottom: '1px solid rgba(255,255,255,0.08)',
         background: hovered ? 'rgba(255,0,64,0.03)' : 'transparent',
         transition: 'background 0.4s ease',
         opacity: visible ? 1 : 0,
@@ -69,7 +69,7 @@ const StatementRow = ({ num, headline, detail, index }) => {
         style={{
           fontFamily: 'JetBrains Mono, monospace',
           fontSize: 11,
-          color: hovered ? '#FF0040' : '#BBBBB8',
+          color: hovered ? '#FF0040' : 'rgba(255,255,255,0.3)',
           letterSpacing: '0.08em',
           transition: 'color 0.3s',
         }}
@@ -84,7 +84,7 @@ const StatementRow = ({ num, headline, detail, index }) => {
             fontFamily: 'Space Grotesk, sans-serif',
             fontWeight: 600,
             fontSize: isMobile ? 'clamp(18px, 5vw, 26px)' : 'clamp(22px, 2.4vw, 34px)',
-            color: '#0A0A0A',
+            color: '#F4F4F2',
             letterSpacing: '-0.025em',
             lineHeight: 1.15,
             margin: isMobile ? '0 0 12px' : 0,
@@ -96,7 +96,7 @@ const StatementRow = ({ num, headline, detail, index }) => {
           <p
             style={{
               fontFamily: 'JetBrains Mono, monospace',
-              fontSize: 11,
+              fontSize: 13,
               lineHeight: 1.85,
               color: '#888884',
               margin: 0,
@@ -113,7 +113,7 @@ const StatementRow = ({ num, headline, detail, index }) => {
         <p
           style={{
             fontFamily: 'JetBrains Mono, monospace',
-            fontSize: 12,
+            fontSize: 14,
             lineHeight: 1.85,
             color: '#888884',
             margin: 0,
@@ -146,13 +146,13 @@ const WhyUsSection = () => {
   }, [])
 
   return (
-    <section style={{ background: 'var(--offwhite)' }}>
+    <section style={{ background: 'var(--dark)' }}>
       {/* Header */}
       <div
         ref={headerRef}
         style={{
           padding: 'clamp(60px, 8vw, 100px) clamp(24px, 6vw, 80px) 60px',
-          borderBottom: '1px solid rgba(10,10,10,0.1)',
+          borderBottom: '1px solid rgba(255,255,255,0.08)',
           opacity: headerVisible ? 1 : 0,
           transform: headerVisible ? 'none' : 'translateY(20px)',
           transition: 'opacity 0.7s ease, transform 0.7s ease',
@@ -166,7 +166,7 @@ const WhyUsSection = () => {
             fontFamily: 'Space Grotesk, sans-serif',
             fontWeight: 700,
             fontSize: 'clamp(32px, 3.5vw, 52px)',
-            color: '#0A0A0A',
+            color: '#F4F4F2',
             letterSpacing: '-0.035em',
             margin: 0,
           }}

@@ -39,7 +39,7 @@ const WaitlistSection = () => {
     <section
       ref={sectionRef}
       style={{
-        background: 'var(--offwhite)',
+        background: 'var(--dark)',
         padding: isMobile ? '80px 24px' : '130px 80px',
         display: 'flex',
         flexDirection: 'column',
@@ -57,7 +57,7 @@ const WaitlistSection = () => {
           pointerEvents: 'none',
           opacity: 0.03,
           backgroundImage:
-            'repeating-linear-gradient(90deg, #0A0A0A 0px, #0A0A0A 1px, transparent 1px, transparent 60px)',
+            'repeating-linear-gradient(90deg, #FF0040 0px, #FF0040 1px, transparent 1px, transparent 60px)',
         }}
       />
 
@@ -73,7 +73,7 @@ const WaitlistSection = () => {
             fontFamily: 'Space Grotesk, sans-serif',
             fontWeight: 700,
             fontSize: 'clamp(34px, 4vw, 60px)',
-            color: '#0A0A0A',
+            color: '#F4F4F2',
             letterSpacing: '-0.04em',
             margin: '0 0 20px',
             lineHeight: 1.05,
@@ -87,7 +87,7 @@ const WaitlistSection = () => {
         <p
           style={{
             fontFamily: 'JetBrains Mono, monospace',
-            fontSize: 12,
+            fontSize: 14,
             lineHeight: 1.9,
             color: '#888884',
             margin: '0 0 48px',
@@ -112,7 +112,7 @@ const WaitlistSection = () => {
             }}
           >
             <TechBracket
-              color={focused ? '#FF0040' : 'rgba(10,10,10,0.2)'}
+              color={focused ? '#FF0040' : 'rgba(255,255,255,0.2)'}
               size={10}
               style={{
                 flex: 1,
@@ -134,12 +134,12 @@ const WaitlistSection = () => {
                   fontFamily: 'JetBrains Mono, monospace',
                   fontSize: 12,
                   letterSpacing: '0.04em',
-                  color: '#0A0A0A',
+                  color: '#F4F4F2',
                   background: 'transparent',
-                  border: '1px solid rgba(10,10,10,0.12)',
+                  border: '1px solid rgba(255,255,255,0.12)',
                   outline: 'none',
                   transition: 'border-color 0.2s',
-                  borderColor: focused ? 'rgba(255,0,64,0.5)' : 'rgba(10,10,10,0.12)',
+                  borderColor: focused ? 'rgba(255,0,64,0.5)' : 'rgba(255,255,255,0.12)',
                 }}
               />
             </TechBracket>
@@ -183,7 +183,7 @@ const WaitlistSection = () => {
           style={{
             fontFamily: 'JetBrains Mono, monospace',
             fontSize: 10,
-            color: '#BBBBB8',
+            color: 'rgba(255,255,255,0.3)',
             letterSpacing: '0.08em',
             margin: 0,
             ...fade(400),

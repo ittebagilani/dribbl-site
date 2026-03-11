@@ -72,7 +72,7 @@ const FeatureCard = ({ Icon, title, desc, delay, visible }) => {
   return (
     <div
       className={`reveal delay-${delay}`}
-      style={{ animationDelay: `${delay * 100}ms` }}
+      style={{ animationDelay: `${delay * 100}ms`, height: '100%' }}
       data-visible={visible}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -80,7 +80,7 @@ const FeatureCard = ({ Icon, title, desc, delay, visible }) => {
       <TechBracket
         color={hovered ? '#FF0040' : 'rgba(255,0,64,0.35)'}
         size={12}
-        style={{ display: 'block', transition: 'all 0.3s' }}
+        style={{ display: 'block', height: '100%', transition: 'all 0.3s' }}
       >
         <div
           style={{
@@ -92,6 +92,8 @@ const FeatureCard = ({ Icon, title, desc, delay, visible }) => {
             border: '1px solid rgba(255,255,255,0.06)',
             padding: '36px 32px',
             transition: 'background 0.3s',
+            height: '100%',
+            boxSizing: 'border-box',
           }}
         >
           <div style={{ marginBottom: 20 }}>
@@ -112,7 +114,7 @@ const FeatureCard = ({ Icon, title, desc, delay, visible }) => {
           <p
             style={{
               fontFamily: 'JetBrains Mono, monospace',
-              fontSize: 11,
+              fontSize: 13,
               lineHeight: 1.9,
               color: 'rgba(244,244,242,0.45)',
               margin: 0,

@@ -21,8 +21,8 @@ const PitchCanvas = () => {
       const H = canvas.height
 
       ctx.clearRect(0, 0, W, H)
-      ctx.globalAlpha = 0.08
-      ctx.strokeStyle = '#0A0A0A'
+      ctx.globalAlpha = 0.18
+      ctx.strokeStyle = 'rgba(255,255,255,0.6)'
       ctx.lineWidth = 1
 
       const PW = 105
@@ -53,7 +53,7 @@ const PitchCanvas = () => {
         ctx.fill()
       }
 
-      ctx.fillStyle = '#0A0A0A'
+      ctx.fillStyle = 'rgba(255,255,255,0.6)'
 
       line(0, 0, PW, 0)
       line(PW, 0, PW, PH)
@@ -149,11 +149,13 @@ const StatsRow = ({ mobile = false }) => (
             justifyContent: 'center',
             gap: 12,
             padding: '20px 20px 28px',
-            background: 'var(--offwhite)',
+            background: 'var(--dark)',
             marginTop: "75px"
           }
         : {
-            position: 'absolute',
+            // position: 'absolute',
+            justifyContent: 'center',
+            marginTop: "75px",
             bottom: 0,
             left: 0,
             right: 0,
@@ -171,7 +173,7 @@ const StatsRow = ({ mobile = false }) => (
           display: mobile ? 'inline-block' : 'block',
           ...(mobile
             ? { width: 'calc(50% - 22px)', minWidth: 130 }
-            : { borderRight: i < stats.length - 1 ? '1px solid rgba(10,10,10,0.08)' : 'none' }),
+            : { borderRight: i < stats.length - 1 ? '1px solid rgba(255,255,255,0.08)' : 'none' }),
         }}
       >
         <div
@@ -186,7 +188,7 @@ const StatsRow = ({ mobile = false }) => (
               fontFamily: 'Space Grotesk, sans-serif',
               fontWeight: 700,
               fontSize: mobile ? 22 : 26,
-              color: '#0A0A0A',
+              color: '#F4F4F2',
               letterSpacing: '-0.03em',
               lineHeight: 1,
               marginBottom: 4,
@@ -251,9 +253,9 @@ const HeroSection = () => {
           flexDirection: 'column',
           justifyContent: isMobile ? 'flex-start' : 'center',
           padding: hPad,
-          borderRight: isMobile ? 'none' : '1px solid rgba(10,10,10,0.12)',
+          borderRight: isMobile ? 'none' : '1px solid rgba(255,255,255,0.08)',
           overflow: 'hidden',
-          background: 'var(--offwhite)',
+          background: 'var(--dark)',
           paddingBottom: isMobile ? '0' : undefined,
         }}
       >
@@ -288,7 +290,7 @@ const HeroSection = () => {
                 display: 'block',
                 fontWeight: 600,
                 fontSize: isMobile ? 'clamp(38px, 11vw, 56px)' : 'clamp(40px, 5vw, 80px)',
-                color: '#0A0A0A',
+                color: '#F4F4F2',
                 letterSpacing: '-0.04em',
               }}
             >
@@ -297,9 +299,9 @@ const HeroSection = () => {
             <span
               style={{
                 display: 'block',
-                fontWeight: 300,
+                fontWeight: 600,
                 fontSize: isMobile ? 'clamp(38px, 11vw, 56px)' : 'clamp(40px, 5vw, 80px)',
-                color: '#0A0A0A',
+                color: '#F4F4F2',
                 letterSpacing: '-0.04em',
               }}
             >
@@ -310,7 +312,7 @@ const HeroSection = () => {
                 display: 'block',
                 fontWeight: 600,
                 fontSize: isMobile ? 'clamp(38px, 11vw, 56px)' : 'clamp(40px, 5vw, 80px)',
-                color: '#0A0A0A',
+                color: '#F4F4F2',
                 letterSpacing: '-0.04em',
               }}
             >
@@ -321,7 +323,7 @@ const HeroSection = () => {
           <p
             style={{
               fontFamily: 'JetBrains Mono, monospace',
-              fontSize: 12,
+              fontSize: 14,
               lineHeight: 1.85,
               color: '#888884',
               marginBottom: isMobile ? 28 : 40,
@@ -347,7 +349,7 @@ const HeroSection = () => {
             <TechBracket color="#FF0040" size={10}>
               <button className="btn-glass">Explore App</button>
             </TechBracket>
-            <button className="btn-dark">Learn More</button>
+            <button className="btn-dark">Watch Demo</button>
           </div>
         </div>
 

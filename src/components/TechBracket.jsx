@@ -44,7 +44,7 @@ const TechBracket = ({
       <span style={corner('top-right')} />
       <span style={corner('bottom-left')} />
       <span style={corner('bottom-right')} />
-      <div style={{ padding, ...innerStyle }}>{children}</div>
+      <div style={{ padding, height: style.height ? '100%' : undefined, boxSizing: 'border-box', ...innerStyle }}>{children}</div>
     </div>
   )
 }

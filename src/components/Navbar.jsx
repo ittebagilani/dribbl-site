@@ -29,7 +29,7 @@ const DiamondLogo = ({ size = 28 }) => (
 )
 
 const navRoutes = {
-  'Home':        '/',
+  // 'Home':        '/',
   'Explore App': '/',
   'About':       '/about',
 }
@@ -49,14 +49,26 @@ const NavLink = ({ label, to, onClick }) => {
         fontSize: 12,
         textDecoration: 'none',
         letterSpacing: '0.04em',
-        color: active ? '#0A0A0A' : hovered ? '#0A0A0A' : '#555552',
-        transition: 'color 0.2s',
+        color: '#F4F4F2',
         whiteSpace: 'nowrap',
         display: 'block',
+        position: 'relative',
+        paddingBottom: 3,
       }}
     >
       <span style={{ color: '#FF0040', marginRight: 3 }}>//</span>
       {label}
+      <span style={{
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        height: 1,
+        background: '#FF0040',
+        transform: active || hovered ? 'scaleX(1)' : 'scaleX(0)',
+        transformOrigin: 'left',
+        transition: 'transform 0.3s cubic-bezier(0.16,1,0.3,1)',
+      }} />
     </Link>
   )
 }
@@ -86,7 +98,7 @@ const Hamburger = ({ open, onClick }) => (
           display: 'block',
           width: 22,
           height: 1.5,
-          background: '#0A0A0A',
+          background: '#F4F4F2',
           borderRadius: 1,
           transformOrigin: 'center',
           transition: 'transform 0.25s ease, opacity 0.25s ease, width 0.25s ease',
@@ -111,7 +123,7 @@ const MobileMenu = ({ open, onClose }) => (
       position: 'fixed',
       inset: 0,
       zIndex: 998,
-      background: 'rgba(244,244,242,0.97)',
+      background: 'rgba(10,10,10,0.97)',
       backdropFilter: 'blur(20px)',
       WebkitBackdropFilter: 'blur(20px)',
       display: 'flex',
@@ -124,7 +136,7 @@ const MobileMenu = ({ open, onClose }) => (
       transition: 'opacity 0.3s ease',
     }}
   >
-    {[['Home', '/'], ['Explore App', '/'], ['About', '/about'], ['Team', '/team'], ['Contact', '/contact']].map(([label, to], i) => (
+    {[ ['Explore App', '/'], ['About', '/about'], ['Team', '/team'], ['Contact', '/contact']].map(([label, to], i) => (
       <Link
         key={label}
         to={to}
@@ -133,7 +145,7 @@ const MobileMenu = ({ open, onClose }) => (
           fontFamily: 'Space Grotesk, sans-serif',
           fontWeight: 600,
           fontSize: 32,
-          color: '#0A0A0A',
+          color: '#F4F4F2',
           textDecoration: 'none',
           letterSpacing: '-0.03em',
           opacity: open ? 1 : 0,
@@ -169,7 +181,6 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const { isMobile } = useBreakpoint()
-
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 60)
@@ -208,12 +219,12 @@ const Navbar = () => {
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
           backgroundColor: scrolled
-            ? 'rgba(244,244,242,0.92)'
-            : 'rgba(244,244,242,0.45)',
+            ? 'rgba(10,10,10,0.95)'
+            : 'rgba(10,10,10,0.90)',
           border: scrolled
-            ? '1px solid rgba(10,10,10,0.1)'
+            ? '1px solid rgba(255,255,255,0.08)'
             : '1px solid transparent',
-          borderBottom: !scrolled ? '1px solid rgba(10,10,10,0.06)' : undefined,
+          borderBottom: !scrolled ? '1px solid rgba(255,255,255,0.06)' : undefined,
           boxShadow: scrolled
             ? '0 4px 28px rgba(0,0,0,0.08), 0 1px 6px rgba(0,0,0,0.04)'
             : 'none',
@@ -248,7 +259,7 @@ const Navbar = () => {
                 fontFamily: 'Space Grotesk, sans-serif',
                 fontWeight: 700,
                 fontSize: scrolled ? 16 : 19,
-                color: '#0A0A0A',
+                color: '#F4F4F2',
                 letterSpacing: '-0.03em',
                 transition: 'font-size 0.35s ease',
               }}
@@ -260,7 +271,7 @@ const Navbar = () => {
           {/* ── Desktop Nav Links ── */}
           {!isMobile && (
             <div style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
-              <NavLink label="Home"        to="/" />
+              {/* <NavLink label="Home"        to="/" /> */}
               <NavLink label="Explore App" to="/" />
               <NavLink label="About"       to="/about" />
               <NavLink label="Team"        to="/team" />
@@ -276,7 +287,7 @@ const Navbar = () => {
                   style={{
                     fontFamily: 'JetBrains Mono, monospace',
                     fontSize: 11,
-                    color: '#999996',
+                    color: 'rgba(244,244,242,0.35)',
                     letterSpacing: '0.08em',
                   }}
                 >
