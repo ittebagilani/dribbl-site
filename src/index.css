@@ -118,7 +118,7 @@ body {
 
 /* ── Button Styles ───────────────────────────────────── */
 .btn-dark {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Manrope', sans-serif;
   font-size: 12px;
   letter-spacing: 0.06em;
   background: var(--dark);
@@ -145,7 +145,7 @@ body {
 .btn-dark:hover { background: #141414; }
 
 .btn-glass {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Manrope', sans-serif;
   font-size: 12px;
   letter-spacing: 0.06em;
   background: rgba(255, 255, 255, 0.08);
@@ -164,7 +164,7 @@ body {
 
 /* ── Overline ────────────────────────────────────────── */
 .overline {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Manrope', sans-serif;
   font-size: 11px;
   letter-spacing: 0.18em;
   color: var(--accent);

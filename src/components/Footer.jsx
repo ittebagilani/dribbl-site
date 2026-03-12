@@ -146,7 +146,7 @@ const Footer = () => {
         {!isMobile && (
           <span
             style={{
-              fontFamily: 'JetBrains Mono, monospace',
+              fontFamily: 'Manrope, sans-serif',
               fontSize: 11,
               color: 'rgba(244,244,242,0.3)',
               letterSpacing: '0.08em',
@@ -178,7 +178,7 @@ const Footer = () => {
         <div>
           <div
             style={{
-              fontFamily: 'JetBrains Mono, monospace',
+              fontFamily: 'Manrope, sans-serif',
               fontSize: 11,
               color: 'rgba(244,244,242,0.25)',
               letterSpacing: '0.06em',
@@ -189,7 +189,7 @@ const Footer = () => {
           </div>
           <div
             style={{
-              fontFamily: 'JetBrains Mono, monospace',
+              fontFamily: 'Manrope, sans-serif',
               fontSize: 10,
               color: 'rgba(244,244,242,0.12)',
               letterSpacing: '0.06em',
@@ -211,7 +211,7 @@ const Footer = () => {
             <div key={col.title}>
               <div
                 style={{
-                  fontFamily: 'JetBrains Mono, monospace',
+                  fontFamily: 'Manrope, sans-serif',
                   fontSize: 10,
                   color: '#FF0040',
                   letterSpacing: '0.14em',
@@ -226,7 +226,7 @@ const Footer = () => {
                   href={href}
                   style={{
                     display: 'block',
-                    fontFamily: 'JetBrains Mono, monospace',
+                    fontFamily: 'Manrope, sans-serif',
                     fontSize: 11,
                     color: 'rgba(244,244,242,0.3)',
                     textDecoration: 'none',

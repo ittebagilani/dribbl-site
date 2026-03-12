@@ -125,7 +125,7 @@ const FeatureCard = ({ Icon, title, subtitle, desc, bullets, delay, visible }) =
           </div>
           <div
             style={{
-              fontFamily: 'JetBrains Mono, monospace',
+              fontFamily: 'Manrope, sans-serif',
               fontSize: 9,
               color: '#FF0040',
               letterSpacing: '0.14em',
@@ -149,7 +149,7 @@ const FeatureCard = ({ Icon, title, subtitle, desc, bullets, delay, visible }) =
           </h3>
           <p
             style={{
-              fontFamily: 'JetBrains Mono, monospace',
+              fontFamily: 'Manrope, sans-serif',
               fontSize: 14,
               lineHeight: 1.9,
               color: 'rgba(244,244,242,0.65)',
@@ -164,7 +164,7 @@ const FeatureCard = ({ Icon, title, subtitle, desc, bullets, delay, visible }) =
               <li
                 key={b}
                 style={{
-                  fontFamily: 'JetBrains Mono, monospace',
+                  fontFamily: 'Manrope, sans-serif',
                   fontSize: 11,
                   color: 'rgba(244,244,242,0.55)',
                   letterSpacing: '0.02em',
@@ -246,7 +246,7 @@ const FeaturesSection = () => {
         <p
           className="reveal delay-2"
           style={{
-            fontFamily: 'JetBrains Mono, monospace',
+            fontFamily: 'Manrope, sans-serif',
             fontSize: 14,
             lineHeight: 1.85,
             color: 'rgba(244,244,242,0.65)',

@@ -150,7 +150,7 @@ const DemoSection = () => {
         </h2>
         <p
           style={{
-            fontFamily: 'JetBrains Mono, monospace',
+            fontFamily: 'Manrope, sans-serif',
             fontSize: 14,
             lineHeight: 1.9,
             color: 'rgba(244,244,242,0.65)',
@@ -176,7 +176,7 @@ const DemoSection = () => {
         }}
       >
         {[
-          { num: '01', label: 'Create Your Profile', desc: 'Sign up and build your player, coach, or club profile for free in minutes.' },
+          { num: '01', label: 'Join Waitlist', desc: 'Join the waitlist and be first to create your profile when we launch.' },
           { num: '02', label: 'Connect', desc: 'Find and follow teammates, coaches, and clubs you\'re part of or want to be part of.' },
           { num: '03', label: 'Get Discovered', desc: 'Let coaches and scouts come to you while you focus on your game.' },
         ].map(({ num, label, desc }, i) => (
@@ -193,7 +193,7 @@ const DemoSection = () => {
           >
             <div
               style={{
-                fontFamily: 'JetBrains Mono, monospace',
+                fontFamily: 'Manrope, sans-serif',
                 fontSize: 10,
                 color: '#FF0040',
                 letterSpacing: '0.14em',
@@ -216,7 +216,7 @@ const DemoSection = () => {
             </h3>
             <p
               style={{
-                fontFamily: 'JetBrains Mono, monospace',
+                fontFamily: 'Manrope, sans-serif',
                 fontSize: 14,
                 lineHeight: 1.85,
                 color: 'rgba(244,244,242,0.6)',
@@ -265,7 +265,7 @@ const DemoSection = () => {
               />
               <div
                 style={{
-                  fontFamily: 'JetBrains Mono, monospace',
+                  fontFamily: 'Manrope, sans-serif',
                   fontSize: 11,
                   color: 'rgba(244,244,242,0.6)',
                   letterSpacing: '0.18em',
@@ -276,7 +276,7 @@ const DemoSection = () => {
               </div>
               <div
                 style={{
-                  fontFamily: 'JetBrains Mono, monospace',
+                  fontFamily: 'Manrope, sans-serif',
                   fontSize: 9,
                   color: 'rgba(255,0,64,0.5)',
                   letterSpacing: '0.14em',
@@ -298,7 +298,7 @@ const DemoSection = () => {
                 style={{
                   position: 'absolute',
                   ...pos,
-                  fontFamily: 'JetBrains Mono, monospace',
+                  fontFamily: 'Manrope, sans-serif',
                   fontSize: 9,
                   color: 'rgba(255,0,64,0.4)',
                   letterSpacing: '0.08em',
@@ -322,10 +322,9 @@ const DemoSection = () => {
             className="btn-glass"
             style={{ color: '#F4F4F2', borderColor: 'rgba(244,244,242,0.12)' }}
           >
-            Create My Profile
+            Join Waitlist
           </button>
         </TechBracket>
-        <button className="btn-dark">Join as a Coach or Club</button>
       </div>
     </section>
   )

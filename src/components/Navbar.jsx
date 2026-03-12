@@ -45,7 +45,7 @@ const NavLink = ({ label, to, onClick }) => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        fontFamily: 'JetBrains Mono, monospace',
+        fontFamily: 'Manrope, sans-serif',
         fontSize: 14,
         textDecoration: 'none',
         letterSpacing: '0.04em',
@@ -280,7 +280,7 @@ const Navbar = () => {
               {!scrolled && (
                 <span
                   style={{
-                    fontFamily: 'JetBrains Mono, monospace',
+                    fontFamily: 'Manrope, sans-serif',
                     fontSize: 11,
                     color: 'rgba(244,244,242,0.55)',
                     letterSpacing: '0.08em',

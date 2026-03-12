@@ -133,13 +133,13 @@ const ValueCard = ({ title, desc, index }) => {
           height: '100%',
           boxSizing: 'border-box',
         }}>
-          <div style={{ fontFamily: 'JetBrains Mono', fontSize: 10, color: '#FF0040', letterSpacing: '0.14em', marginBottom: 14 }}>
+          <div style={{ fontFamily: 'Manrope', fontSize: 10, color: '#FF0040', letterSpacing: '0.14em', marginBottom: 14 }}>
             {String(index + 1).padStart(2, '0')}
           </div>
           <h3 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 18, color: '#F4F4F2', letterSpacing: '-0.02em', margin: '0 0 12px' }}>
             {title}
           </h3>
-          <p style={{ fontFamily: 'JetBrains Mono', fontSize: 15, lineHeight: 1.85, color: 'rgba(244,244,242,0.65)', margin: 0, letterSpacing: '0.02em' }}>
+          <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.85, color: 'rgba(244,244,242,0.65)', margin: 0, letterSpacing: '0.02em' }}>
             {desc}
           </p>
         </div>
@@ -194,7 +194,7 @@ const AboutPage = () => {
             Building the Future<br />of Soccer Scouting.
           </h1>
           <p style={{
-            fontFamily: 'JetBrains Mono',
+            fontFamily: 'Manrope',
             fontSize: 15,
             lineHeight: 1.9,
             color: 'rgba(244,244,242,0.65)',
@@ -228,7 +228,7 @@ const AboutPage = () => {
             No barrier should stand between talent and opportunity.
           </h2>
         </div>
-        <p style={{ fontFamily: 'JetBrains Mono', fontSize: 14, lineHeight: 1.95, color: 'rgba(244,244,242,0.65)', margin: 0, letterSpacing: '0.02em', ...fade(missionVisible, 150) }}>
+        <p style={{ fontFamily: 'Manrope', fontSize: 14, lineHeight: 1.95, color: 'rgba(244,244,242,0.65)', margin: 0, letterSpacing: '0.02em', ...fade(missionVisible, 150) }}>
           To democratize soccer scouting by creating the world's most advanced AI-powered
           platform that connects talented players with clubs and scouts, ensuring no exceptional
           talent goes undiscovered regardless of geographical or financial barriers.
@@ -252,7 +252,7 @@ const AboutPage = () => {
           <h3 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(22px, 2.5vw, 32px)', color: '#F4F4F2', letterSpacing: '-0.03em', margin: '0 0 16px' }}>
             Computer vision that sees what scouts miss.
           </h3>
-          <p style={{ fontFamily: 'JetBrains Mono', fontSize: 15, lineHeight: 1.9, color: 'rgba(244,244,242,0.6)', margin: 0, letterSpacing: '0.02em' }}>
+          <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.9, color: 'rgba(244,244,242,0.6)', margin: 0, letterSpacing: '0.02em' }}>
             Using cutting-edge computer vision to analyze player technique, movement patterns,
             and untapped potential — generating 200+ data points per session in real time.
           </p>
@@ -264,7 +264,7 @@ const AboutPage = () => {
           <h3 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(22px, 2.5vw, 32px)', color: '#F4F4F2', letterSpacing: '-0.03em', margin: '0 0 16px' }}>
             From Lagos to Tokyo. Every talent, every scout.
           </h3>
-          <p style={{ fontFamily: 'JetBrains Mono', fontSize: 15, lineHeight: 1.9, color: 'rgba(244,244,242,0.65)', margin: 0, letterSpacing: '0.02em' }}>
+          <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.9, color: 'rgba(244,244,242,0.65)', margin: 0, letterSpacing: '0.02em' }}>
             Bridging the gap between talented players and scouts across 140+ countries.
             No gatekeepers. No geography. Just talent meeting opportunity.
           </p>
@@ -281,10 +281,10 @@ const AboutPage = () => {
           <div style={{ height: isMobile ? 260 : 360, position: 'relative', background: '#000', overflow: 'hidden' }}>
             <AnalysisCanvas />
             <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8, zIndex: 2 }}>
-              <div style={{ fontFamily: 'JetBrains Mono', fontSize: isMobile ? 10 : 11, color: 'rgba(244,244,242,0.5)', letterSpacing: '0.18em' }}>
+              <div style={{ fontFamily: 'Manrope', fontSize: isMobile ? 10 : 11, color: 'rgba(244,244,242,0.5)', letterSpacing: '0.18em' }}>
                 ANALYSIS VISUALIZATION COMING SOON
               </div>
-              <div style={{ fontFamily: 'JetBrains Mono', fontSize: 9, color: 'rgba(255,0,64,0.5)', letterSpacing: '0.12em' }}>
+              <div style={{ fontFamily: 'Manrope', fontSize: 9, color: 'rgba(255,0,64,0.5)', letterSpacing: '0.12em' }}>
                 // RADAR PREVIEW ACTIVE
               </div>
             </div>

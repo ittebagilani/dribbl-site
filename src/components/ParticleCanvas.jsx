@@ -29,7 +29,7 @@ const HudLabel = ({ label, value, position }) => {
         >
           <div
             style={{
-              fontFamily: 'JetBrains Mono, monospace',
+              fontFamily: 'Manrope, sans-serif',
               fontSize: 9,
               color: '#FF0040',
               letterSpacing: '0.12em',
@@ -40,7 +40,7 @@ const HudLabel = ({ label, value, position }) => {
           </div>
           <div
             style={{
-              fontFamily: 'JetBrains Mono, monospace',
+              fontFamily: 'Manrope, sans-serif',
               fontSize: 14,
               color: '#F4F4F2',
               fontWeight: 600,

@@ -128,90 +128,6 @@ const PitchCanvas = () => {
 }
 
 /* ─────────────────────────────────────────────────────────
-   Stats Row
-───────────────────────────────────────────────────────── */
-const stats = [
-  { value: '140+', label: 'COUNTRIES' },
-  { value: '50K+', label: 'PLAYERS' },
-  { value: '0.01s', label: 'ANALYSIS TIME' },
-  { value: '98%', label: 'SCOUT ACCURACY' },
-]
-
-const StatsRow = ({ mobile = false }) => (
-  <div
-    style={{
-      // borderTop: '1px solid rgba(10,10,10,0.1)',
-      ...(mobile
-        ? {
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-            gap: 12,
-            padding: '20px 20px 28px',
-            background: 'var(--dark)',
-            marginTop: "75px"
-          }
-        : {
-            // position: 'absolute',
-            justifyContent: 'center',
-            marginTop: "75px",
-            bottom: 0,
-            left: 0,
-            right: 0,
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-          }),
-    }}
-  >
-    {stats.map((s, i) => (
-      <TechBracket
-        key={s.label}
-        color="#FF0040"
-        size={8}
-        style={{
-          display: mobile ? 'inline-block' : 'block',
-          ...(mobile
-            ? { width: 'calc(50% - 22px)', minWidth: 130 }
-            : { borderRight: i < stats.length - 1 ? '1px solid rgba(255,255,255,0.08)' : 'none' }),
-        }}
-      >
-        <div
-          className="glass"
-          style={{
-            padding: mobile ? '14px 16px' : '20px 24px',
-            textAlign: mobile ? 'center' : 'left',
-          }}
-        >
-          <div
-            style={{
-              fontFamily: 'Inter, sans-serif',
-              fontWeight: 800,
-              fontSize: mobile ? 22 : 26,
-              color: '#F4F4F2',
-              letterSpacing: '-0.03em',
-              lineHeight: 1,
-              marginBottom: 4,
-            }}
-          >
-            {s.value}
-          </div>
-          <div
-            style={{
-              fontFamily: 'JetBrains Mono, monospace',
-              fontSize: 9,
-              color: 'rgba(244,244,242,0.65)',
-              letterSpacing: '0.14em',
-            }}
-          >
-            {s.label}
-          </div>
-        </div>
-      </TechBracket>
-    ))}
-  </div>
-)
-
-/* ─────────────────────────────────────────────────────────
    Hero Section
 ───────────────────────────────────────────────────────── */
 const HeroSection = () => {
@@ -321,7 +237,7 @@ const HeroSection = () => {
 
           <p
             style={{
-              fontFamily: 'JetBrains Mono, monospace',
+              fontFamily: 'Manrope, sans-serif',
               fontSize: 14,
               lineHeight: 1.85,
               color: 'rgba(244,244,242,0.65)',
@@ -341,18 +257,16 @@ const HeroSection = () => {
               gap: 12,
               alignItems: 'center',
               flexWrap: 'wrap',
+              justifyContent: isMobile ? 'center' : 'flex-start',
               ...fade(300),
             }}
           >
             <TechBracket color="#FF0040" size={10}>
-              <button className="btn-glass">Create Your Profile</button>
+              <button className="btn-glass">Join Waitlist</button>
             </TechBracket>
-            <button className="btn-dark">Join as a Coach or Club</button>
           </div>
         </div>
 
-        {/* Stats — desktop only, inline below text */}
-        {!isTablet && <StatsRow mobile={false} />}
       </div>
 
       {/* ── Video Pane — full height on desktop, fixed height block on tablet/mobile ── */}
@@ -382,8 +296,6 @@ const HeroSection = () => {
         />
       </div>
 
-      {/* ── Stats — tablet/mobile, below video ── */}
-      {isTablet && <StatsRow mobile={true} />}
     </section>
   )
 }

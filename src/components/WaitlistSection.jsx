@@ -86,7 +86,7 @@ const WaitlistSection = () => {
         {/* Subtext */}
         <p
           style={{
-            fontFamily: 'JetBrains Mono, monospace',
+            fontFamily: 'Manrope, sans-serif',
             fontSize: 14,
             lineHeight: 1.9,
             color: 'rgba(244,244,242,0.65)',
@@ -112,18 +112,15 @@ const WaitlistSection = () => {
         >
           <TechBracket color="#FF0040" size={10}>
             <button className="btn-glass" style={{ padding: '14px 32px' }}>
-              Create My Profile
+              Join Waitlist
             </button>
           </TechBracket>
-          <button className="btn-dark" style={{ padding: '14px 32px' }}>
-            Join as a Coach or Club
-          </button>
         </div>
 
         {/* Fine print */}
         <p
           style={{
-            fontFamily: 'JetBrains Mono, monospace',
+            fontFamily: 'Manrope, sans-serif',
             fontSize: 10,
             color: 'rgba(255,255,255,0.3)',
             letterSpacing: '0.08em',

@@ -124,15 +124,15 @@ const MemberCard = ({ name, role, university, bio, initials, index, image }) => 
               <h3 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 18, color: '#F4F4F2', letterSpacing: '-0.025em', margin: '0 0 4px' }}>
                 {name}
               </h3>
-              <div style={{ fontFamily: 'JetBrains Mono', fontSize: 10, color: '#FF0040', letterSpacing: '0.1em', marginBottom: 6 }}>
+              <div style={{ fontFamily: 'Manrope', fontSize: 10, color: '#FF0040', letterSpacing: '0.1em', marginBottom: 6 }}>
                 {role}
               </div>
-              <div style={{ fontFamily: 'JetBrains Mono', fontSize: 10, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.04em' }}>
+              <div style={{ fontFamily: 'Manrope', fontSize: 10, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.04em' }}>
                 {university}
               </div>
             </div>
           </div>
-          <p style={{ fontFamily: 'JetBrains Mono', fontSize: 15, lineHeight: 1.85, color: 'rgba(244,244,242,0.65)', margin: 0, letterSpacing: '0.02em' }}>
+          <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.85, color: 'rgba(244,244,242,0.65)', margin: 0, letterSpacing: '0.02em' }}>
             {bio}
           </p>
         </div>
@@ -193,7 +193,7 @@ const TeamPage = () => {
         <h1 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(36px, 5vw, 72px)', color: '#F4F4F2', letterSpacing: '-0.04em', lineHeight: 1.05, margin: '0 0 24px' }}>
           The People Behind Dribbl.
         </h1>
-        <p style={{ fontFamily: 'JetBrains Mono', fontSize: 15, lineHeight: 1.9, color: 'rgba(244,244,242,0.6)', maxWidth: 560, margin: 0, letterSpacing: '0.02em' }}>
+        <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.9, color: 'rgba(244,244,242,0.6)', maxWidth: 560, margin: 0, letterSpacing: '0.02em' }}>
           A diverse team of soccer enthusiasts, tech innovators, and specialists united by
           one mission — ensuring no exceptional talent goes undiscovered.
         </p>
@@ -225,7 +225,7 @@ const TeamPage = () => {
             <h3 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(20px, 2.5vw, 28px)', color: '#F4F4F2', letterSpacing: '-0.03em', margin: '0 0 16px' }}>
               We're always looking for passionate people.
             </h3>
-            <p style={{ fontFamily: 'JetBrains Mono', fontSize: 15, lineHeight: 1.85, color: 'rgba(244,244,242,0.65)', margin: '0 0 28px', letterSpacing: '0.02em' }}>
+            <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.85, color: 'rgba(244,244,242,0.65)', margin: '0 0 28px', letterSpacing: '0.02em' }}>
               If you love soccer, AI, and creating opportunities for players worldwide,
               we'd love to hear from you.
             </p>
@@ -234,7 +234,7 @@ const TeamPage = () => {
                 <button className="btn-dark" style={{ padding: '10px 22px', fontSize: 11 }}>View Open Positions</button>
               </TechBracket>
               <a href="/contact" style={{ textDecoration: 'none' }}>
-                <button className="btn-glass" style={{ padding: '10px 22px', fontSize: 11, fontFamily: 'JetBrains Mono' }}>Contact Us</button>
+                <button className="btn-glass" style={{ padding: '10px 22px', fontSize: 11, fontFamily: 'Manrope' }}>Contact Us</button>
               </a>
             </div>
           </div>

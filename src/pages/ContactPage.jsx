@@ -9,7 +9,7 @@ const Field = ({ label, type = 'text', placeholder, value, onChange, multiline =
   const Tag = multiline ? 'textarea' : 'input'
   return (
     <div style={{ marginBottom: 20 }}>
-      <div style={{ fontFamily: 'JetBrains Mono', fontSize: 10, color: focused ? '#FF0040' : '#888884', letterSpacing: '0.12em', marginBottom: 8, transition: 'color 0.2s' }}>
+      <div style={{ fontFamily: 'Manrope', fontSize: 10, color: focused ? '#FF0040' : '#888884', letterSpacing: '0.12em', marginBottom: 8, transition: 'color 0.2s' }}>
         {label}{required && <span style={{ color: '#FF0040' }}> *</span>}
       </div>
       <TechBracket color={focused ? '#FF0040' : 'rgba(255,255,255,0.15)'} size={8} style={{ display: 'block', transition: 'all 0.2s' }}>
@@ -26,7 +26,7 @@ const Field = ({ label, type = 'text', placeholder, value, onChange, multiline =
             display: 'block',
             width: '100%',
             padding: '13px 16px',
-            fontFamily: 'JetBrains Mono',
+            fontFamily: 'Manrope',
             fontSize: 14,
             color: '#F4F4F2',
             background: 'transparent',
@@ -46,8 +46,8 @@ const Field = ({ label, type = 'text', placeholder, value, onChange, multiline =
 /* ── Info tile ──────────────────────────────────────── */
 const InfoTile = ({ label, value }) => (
   <div style={{ borderBottom: '1px solid rgba(255,255,255,0.08)', padding: '20px 0' }}>
-    <div style={{ fontFamily: 'JetBrains Mono', fontSize: 10, color: '#FF0040', letterSpacing: '0.12em', marginBottom: 6 }}>{label}</div>
-    <div style={{ fontFamily: 'JetBrains Mono', fontSize: 14, color: '#F4F4F2', letterSpacing: '0.04em' }}>{value}</div>
+    <div style={{ fontFamily: 'Manrope', fontSize: 10, color: '#FF0040', letterSpacing: '0.12em', marginBottom: 6 }}>{label}</div>
+    <div style={{ fontFamily: 'Manrope', fontSize: 14, color: '#F4F4F2', letterSpacing: '0.04em' }}>{value}</div>
   </div>
 )
 
@@ -84,7 +84,7 @@ const ContactPage = () => {
         <h1 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(36px, 5vw, 72px)', color: '#F4F4F2', letterSpacing: '-0.04em', lineHeight: 1.05, margin: '0 0 24px', ...fade(100) }}>
           Let's talk.
         </h1>
-        <p style={{ fontFamily: 'JetBrains Mono', fontSize: 15, lineHeight: 1.9, color: 'rgba(244,244,242,0.6)', maxWidth: 500, margin: 0, letterSpacing: '0.02em', ...fade(200) }}>
+        <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.9, color: 'rgba(244,244,242,0.6)', maxWidth: 500, margin: 0, letterSpacing: '0.02em', ...fade(200) }}>
           Whether you're a player, scout, club, or just curious — we want to hear from you.
         </p>
       </section>
@@ -103,7 +103,7 @@ const ContactPage = () => {
           <h2 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(22px, 2.5vw, 32px)', color: '#F4F4F2', letterSpacing: '-0.03em', margin: '0 0 12px' }}>
             Get in touch.
           </h2>
-          <p style={{ fontFamily: 'JetBrains Mono', fontSize: 15, lineHeight: 1.85, color: 'rgba(244,244,242,0.65)', margin: '0 0 40px', letterSpacing: '0.02em' }}>
+          <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.85, color: 'rgba(244,244,242,0.65)', margin: '0 0 40px', letterSpacing: '0.02em' }}>
             We typically respond within 24 hours. For urgent matters, reach us directly by email.
           </p>
           <InfoTile label="// EMAIL" value="hello@dribbl.io" />
@@ -111,10 +111,10 @@ const ContactPage = () => {
           <InfoTile label="// PRESS" value="press@dribbl.io" />
           <InfoTile label="// LOCATION" value="Toronto, Canada" />
           <div style={{ marginTop: 40 }}>
-            <div style={{ fontFamily: 'JetBrains Mono', fontSize: 10, color: '#FF0040', letterSpacing: '0.12em', marginBottom: 16 }}>// FOLLOW US</div>
+            <div style={{ fontFamily: 'Manrope', fontSize: 10, color: '#FF0040', letterSpacing: '0.12em', marginBottom: 16 }}>// FOLLOW US</div>
             <div style={{ display: 'flex', gap: 12 }}>
               {['Twitter / X', 'Instagram', 'LinkedIn'].map((s) => (
-                <a key={s} href="#" style={{ fontFamily: 'JetBrains Mono', fontSize: 10, color: 'rgba(244,244,242,0.65)', textDecoration: 'none', letterSpacing: '0.06em', transition: 'color 0.2s' }}
+                <a key={s} href="#" style={{ fontFamily: 'Manrope', fontSize: 10, color: 'rgba(244,244,242,0.65)', textDecoration: 'none', letterSpacing: '0.06em', transition: 'color 0.2s' }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = '#F4F4F2')}
                   onMouseLeave={(e) => (e.currentTarget.style.color = '#888884')}
                 >
@@ -142,7 +142,7 @@ const ContactPage = () => {
                     Send Message
                   </button>
                 </TechBracket>
-                <span style={{ fontFamily: 'JetBrains Mono', fontSize: 10, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.08em' }}>
+                <span style={{ fontFamily: 'Manrope', fontSize: 10, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.08em' }}>
                   We respond within 24h
                 </span>
               </div>
@@ -153,7 +153,7 @@ const ContactPage = () => {
               <h3 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 26, color: '#F4F4F2', letterSpacing: '-0.03em', margin: '0 0 12px' }}>
                 We'll be in touch.
               </h3>
-              <p style={{ fontFamily: 'JetBrains Mono', fontSize: 15, lineHeight: 1.85, color: 'rgba(244,244,242,0.65)', margin: 0, letterSpacing: '0.02em' }}>
+              <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.85, color: 'rgba(244,244,242,0.65)', margin: 0, letterSpacing: '0.02em' }}>
                 Thank you for reaching out, {form.name.split(' ')[0]}. Expect a response within 24 hours.
               </p>
             </div>

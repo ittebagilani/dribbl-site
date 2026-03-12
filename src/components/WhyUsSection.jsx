@@ -52,7 +52,7 @@ const StatementRow = ({ num, headline, detail, index }) => {
       {/* Number */}
       <div
         style={{
-          fontFamily: 'JetBrains Mono, monospace',
+          fontFamily: 'Manrope, sans-serif',
           fontSize: 11,
           color: hovered ? '#FF0040' : 'rgba(255,255,255,0.3)',
           letterSpacing: '0.08em',
@@ -80,7 +80,7 @@ const StatementRow = ({ num, headline, detail, index }) => {
         {isMobile && (
           <p
             style={{
-              fontFamily: 'JetBrains Mono, monospace',
+              fontFamily: 'Manrope, sans-serif',
               fontSize: 14,
               lineHeight: 1.85,
               color: 'rgba(244,244,242,0.65)',
@@ -97,7 +97,7 @@ const StatementRow = ({ num, headline, detail, index }) => {
       {!isMobile && (
         <p
           style={{
-            fontFamily: 'JetBrains Mono, monospace',
+            fontFamily: 'Manrope, sans-serif',
             fontSize: 14,
             lineHeight: 1.85,
             color: 'rgba(244,244,242,0.65)',
