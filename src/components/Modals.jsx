@@ -98,10 +98,59 @@ const WaitlistModal = ({ onClose }) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e) => {
+  const waitlistEndpoint = import.meta.env.VITE_WAITLIST_ENDPOINT || ''
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    if (email.trim()) setSubmitted(true)
+    if (!waitlistEndpoint) {
+      setError('Waitlist endpoint is not configured.')
+      return
+    }
+
+    if (!role) {
+      setError('Please select a role.')
+      return
+    }
+
+    if (!name.trim()) {
+      setError('Please enter your first name.')
+      return
+    }
+
+    if (!email.trim()) {
+      setError('Please enter your email.')
+      return
+    }
+
+    setSubmitting(true)
+    setError('')
+
+    try {
+      const params = new URLSearchParams({
+        firstName: name.trim(),
+        email: email.trim(),
+        role,
+        source: 'waitlist-modal',
+        timestamp: new Date().toISOString(),
+      })
+
+      const res = await fetch(`${waitlistEndpoint}?${params.toString()}`, {
+        method: 'GET',
+      })
+
+      if (!res.ok) {
+        throw new Error('Request failed')
+      }
+
+      setSubmitted(true)
+    } catch (err) {
+      setError('Something went wrong. Please try again.')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   const inputStyle = {
@@ -194,6 +243,7 @@ const WaitlistModal = ({ onClose }) => {
                   value={name}
                   onChange={e => setName(e.target.value)}
                   placeholder="Your name"
+                  required
                   style={inputStyle}
                   onFocus={e => e.target.style.borderColor = 'rgba(255,0,64,0.5)'}
                   onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.1)'}
@@ -222,11 +272,18 @@ const WaitlistModal = ({ onClose }) => {
                     type="submit"
                     className="btn-glass"
                     style={{ width: '100%', padding: '13px', fontSize: 12, letterSpacing: '0.08em' }}
+                    disabled={submitting}
                   >
-                    Join Waitlist
+                    {submitting ? 'Joining...' : 'Join Waitlist'}
                   </button>
                 </TechBracket>
               </div>
+
+              {error && (
+                <p style={{ fontFamily: 'JetBrains Mono', fontSize: 10, color: '#FF0040', letterSpacing: '0.06em', margin: '6px 0 0', textAlign: 'center' }}>
+                  {error}
+                </p>
+              )}
 
               <p style={{ fontFamily: 'JetBrains Mono', fontSize: 9, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.08em', margin: '4px 0 0', textAlign: 'center' }}>
                 FREE TO JOIN · NO CREDIT CARD REQUIRED
