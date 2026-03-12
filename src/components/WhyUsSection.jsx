@@ -23,7 +23,7 @@ const statements = [
 ]
 
 const NAVBAR_H = 200
-const STACK_OFFSET = 8 // px each card peeks above the previous
+const STACK_OVERLAP = 20
 
 const StatementRow = ({ num, headline, detail, index }) => {
   const [hovered, setHovered] = useState(false)
@@ -35,17 +35,21 @@ const StatementRow = ({ num, headline, detail, index }) => {
       onMouseLeave={() => setHovered(false)}
       style={{
         position: 'sticky',
-        top: NAVBAR_H + index * STACK_OFFSET,
+        top: NAVBAR_H,
+        marginTop: isMobile ? 16 : index === 0 ? 0 : -STACK_OVERLAP,
         display: 'grid',
         gridTemplateColumns: isMobile ? '36px 1fr' : '64px 1fr 1fr',
         alignItems: isMobile ? 'start' : 'center',
         gap: isMobile ? '0 16px' : '0 48px',
         padding: isMobile ? '32px 24px' : '48px 80px',
-        borderBottom: '1px solid rgba(255,255,255,0.08)',
-        borderTop: index > 0 ? '1px solid rgba(255,255,255,0.08)' : 'none',
+        border: '1px solid rgba(255,255,255,0.1)',
+        borderRadius: 18,
         background: hovered ? 'rgba(20,20,20,1)' : 'rgba(14,14,14,1)',
-        boxShadow: '0 -4px 24px rgba(0,0,0,0.4)',
-        transition: 'background 0.3s ease',
+        boxShadow: hovered
+          ? '0 26px 60px rgba(0,0,0,0.45)'
+          : '0 18px 44px rgba(0,0,0,0.35)',
+        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+        transition: 'background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease',
         zIndex: index + 1,
       }}
     >

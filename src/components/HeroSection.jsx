@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react'
 import TechBracket from './TechBracket'
 import { useBreakpoint } from '../hooks/useBreakpoint'
+import { useModal } from '../context/ModalContext'
 
 /* ─────────────────────────────────────────────────────────
    Isometric Soccer Pitch Canvas
@@ -133,6 +134,7 @@ const PitchCanvas = () => {
 const HeroSection = () => {
   const [mounted, setMounted] = useState(false)
   const { isMobile, isTablet } = useBreakpoint()
+  const { openWaitlist } = useModal()
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 80)
@@ -262,7 +264,7 @@ const HeroSection = () => {
             }}
           >
             <TechBracket color="#FF0040" size={10}>
-              <button className="btn-glass">Join Waitlist</button>
+              <button className="btn-glass" onClick={openWaitlist}>Join Waitlist</button>
             </TechBracket>
           </div>
         </div>

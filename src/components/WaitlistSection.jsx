@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react'
 import TechBracket from './TechBracket'
 import { useBreakpoint } from '../hooks/useBreakpoint'
+import { useModal } from '../context/ModalContext'
 
 const WaitlistSection = () => {
   const sectionRef = useRef(null)
@@ -9,6 +10,7 @@ const WaitlistSection = () => {
   const [submitted, setSubmitted] = useState(false)
   const [focused, setFocused] = useState(false)
   const { isMobile } = useBreakpoint()
+  const { openWaitlist } = useModal()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -111,7 +113,7 @@ const WaitlistSection = () => {
           }}
         >
           <TechBracket color="#FF0040" size={10}>
-            <button className="btn-glass" style={{ padding: '14px 32px' }}>
+            <button className="btn-glass" onClick={openWaitlist} style={{ padding: '14px 32px' }}>
               Join Waitlist
             </button>
           </TechBracket>

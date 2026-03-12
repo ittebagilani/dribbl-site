@@ -94,19 +94,15 @@ const SocialIcon = ({ icon: Icon, label, href }) => (
 const columns = [
   {
     title: 'Company',
-    links: [['About Us', '/about'], ['Our Team', '/team'], ['Careers', '#'], ['Press', '#']],
+    links: [['About Us', '/about'], ['Our Team', '/team']],
   },
   {
     title: 'Support',
-    links: [['Help Center', '#'], ['Contact Us', '/contact'], ['Privacy Policy', '#'], ['Terms of Service', '#']],
-  },
-  {
-    title: 'Legal',
-    links: [['Privacy', '#'], ['Terms', '#'], ['Cookies', '#'], ['Licenses', '#']],
+    links: [['Contact Us', '/contact'], ['Privacy Policy', '#'], ['Terms of Service', '#']],
   },
   {
     title: 'Connect',
-    links: [['Twitter / X', '#'], ['Instagram', '#'], ['LinkedIn', '#'], ['TikTok', '#']],
+    links: [['Instagram', '#'], ['LinkedIn', '#']],
   },
 ]
 
@@ -128,11 +124,13 @@ const Footer = () => {
         style={{
           display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
-          alignItems: isMobile ? 'flex-start' : 'center',
-          justifyContent: 'space-between',
-          gap: isMobile ? 20 : 0,
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+          gap: isMobile ? 20 : 32,
           padding: isMobile ? '48px 24px 32px' : '56px 80px 40px',
           borderBottom: '1px solid rgba(244,244,242,0.06)',
+          textAlign: 'center',
         }}
       >
         {/* Wordmark */}
@@ -171,11 +169,13 @@ const Footer = () => {
           gridTemplateColumns: isMobile ? '1fr' : 'auto 1fr',
           gap: isMobile ? '40px 0' : '0 80px',
           alignItems: 'start',
+          justifyItems: 'center',
+          textAlign: 'center',
           padding: isMobile ? '40px 24px 48px' : '48px 80px 56px',
         }}
       >
         {/* Copyright */}
-        <div>
+        <div style={{ textAlign: 'center' }}>
           <div
             style={{
               fontFamily: 'Manrope, sans-serif',
@@ -205,6 +205,8 @@ const Footer = () => {
             display: 'grid',
             gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
             gap: isMobile ? '32px 16px' : '0 32px',
+            justifyItems: 'center',
+            textAlign: 'center',
           }}
         >
           {columns.map((col) => (

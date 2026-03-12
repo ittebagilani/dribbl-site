@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import TechBracket from './TechBracket'
 import { useBreakpoint } from '../hooks/useBreakpoint'
+import { useModal } from '../context/ModalContext'
 
 const DiamondLogo = ({ size = 28 }) => (
   <div style={{ position: 'relative', width: size, height: size, flexShrink: 0 }}>
@@ -117,7 +118,7 @@ const Hamburger = ({ open, onClick }) => (
 )
 
 /* ── Mobile full-screen menu overlay ─────────────────── */
-const MobileMenu = ({ open, onClose }) => (
+const MobileMenu = ({ open, onClose, onWaitlist }) => (
   <div
     style={{
       position: 'fixed',
@@ -167,7 +168,7 @@ const MobileMenu = ({ open, onClose }) => (
       <TechBracket size={8} color="#FF0040">
         <button
           className="btn-dark"
-          onClick={onClose}
+          onClick={() => { onClose(); onWaitlist() }}
           style={{ padding: '12px 32px', fontSize: 12 }}
         >
           Join Waitlist
@@ -181,6 +182,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const { isMobile } = useBreakpoint()
+  const { openWaitlist } = useModal()
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 60)
@@ -292,6 +294,7 @@ const Navbar = () => {
               <TechBracket size={6} color="#FF0040">
                 <button
                   className="btn-dark"
+                  onClick={openWaitlist}
                   style={{ padding: scrolled ? '7px 18px' : '9px 22px', fontSize: 11 }}
                 >
                   Join Waitlist
@@ -307,7 +310,7 @@ const Navbar = () => {
 
       {/* Mobile fullscreen overlay */}
       {isMobile && (
-        <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
+        <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} onWaitlist={openWaitlist} />
       )}
     </>
   )
