@@ -55,8 +55,12 @@ const ContactPage = () => {
   const { isMobile } = useBreakpoint()
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState('')
   const [heroVisible, setHeroVisible] = useState(false)
   const heroRef = useRef(null)
+
+  const contactEndpoint = import.meta.env.VITE_CONTACT_ENDPOINT || ''
 
   useEffect(() => {
     const t = setTimeout(() => setHeroVisible(true), 80)
@@ -65,9 +69,43 @@ const ContactPage = () => {
 
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }))
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    if (form.name && form.email && form.message) setSubmitted(true)
+    if (!contactEndpoint) {
+      setError('Contact endpoint is not configured.')
+      return
+    }
+
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      setError('Please complete the required fields.')
+      return
+    }
+
+    setSubmitting(true)
+    setError('')
+
+    try {
+      const params = new URLSearchParams({
+        name: form.name.trim(),
+        email: form.email.trim(),
+        subject: form.subject.trim(),
+        message: form.message.trim(),
+        source: 'contact-page',
+        timestamp: new Date().toISOString(),
+        cb: String(Date.now()),
+      })
+
+      const url = `${contactEndpoint}?${params.toString()}`
+
+      // Use a no-cors request to avoid Apps Script CORS restrictions.
+      await fetch(url, { method: 'GET', mode: 'no-cors', cache: 'no-store' })
+
+      setSubmitted(true)
+    } catch (err) {
+      setError('Something went wrong. Please try again.')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   const fade = (delay = 0) => ({
@@ -138,14 +176,19 @@ const ContactPage = () => {
 
               <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginTop: 8 }}>
                 <TechBracket color="#FF0040" size={8}>
-                  <button type="submit" className="btn-dark" style={{ padding: '13px 28px', fontSize: 12 }}>
-                    Send Message
+                  <button type="submit" className="btn-dark" style={{ padding: '13px 28px', fontSize: 12 }} disabled={submitting}>
+                    {submitting ? 'Sending...' : 'Send Message'}
                   </button>
                 </TechBracket>
                 <span style={{ fontFamily: 'Manrope', fontSize: 10, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.08em' }}>
                   We respond within 24h
                 </span>
               </div>
+              {error && (
+                <p style={{ fontFamily: 'Manrope', fontSize: 12, color: '#FF0040', letterSpacing: '0.04em', margin: '12px 0 0' }}>
+                  {error}
+                </p>
+              )}
             </form>
           ) : (
             <div style={{ padding: '40px 32px', border: '1px solid rgba(255,0,64,0.2)', background: 'rgba(255,0,64,0.03)' }}>

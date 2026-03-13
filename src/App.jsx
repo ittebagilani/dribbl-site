@@ -12,6 +12,7 @@ import Footer from './components/Footer'
 import AboutPage from './pages/AboutPage'
 import TeamPage from './pages/TeamPage'
 import ContactPage from './pages/ContactPage'
+import NotFoundPage from './pages/NotFoundPage'
 
 /* ── Scroll to top on route change ─────────────────── */
 const ScrollToTop = () => {
@@ -45,6 +46,7 @@ const App = () => (
           <Route path="/about"   element={<AboutPage />} />
           <Route path="/team"    element={<TeamPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="*"        element={<NotFoundPage />} />
         </Routes>
       </main>
     </ModalProvider>

@@ -53,9 +53,8 @@ const FooterGrid = () => {
 }
 
 const socialLinks = [
-  { icon: Twitter,   label: 'X / Twitter', href: '#' },
-  { icon: Instagram, label: 'Instagram',   href: '#' },
-  { icon: Linkedin,  label: 'LinkedIn',    href: '#' },
+  { icon: Instagram, label: 'Instagram',   href: 'https://www.instagram.com/teamdribbl/' },
+  { icon: Linkedin,  label: 'LinkedIn',    href: 'https://www.linkedin.com/company/dribbl1/' },
 ]
 
 /* ── Social Icon ─────────────────────────────────────── */
@@ -63,6 +62,8 @@ const SocialIcon = ({ icon: Icon, label, href }) => (
   <a
     href={href}
     title={label}
+    target="_blank"
+    rel="noopener noreferrer"
     style={{
       width: 36,
       height: 36,
@@ -102,7 +103,7 @@ const columns = [
   },
   {
     title: 'Connect',
-    links: [['Instagram', '#'], ['LinkedIn', '#']],
+    links: [['Instagram', 'https://www.instagram.com/teamdribbl/'], ['LinkedIn', 'https://www.linkedin.com/company/dribbl1/']],
   },
 ]
 
