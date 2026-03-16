@@ -224,8 +224,8 @@ const AboutPage = () => {
           <div className="stock-frame" style={{ height: isMobile ? 220 : 300, borderRadius: 20 }}>
             <img
               className="stock-img"
-              src="/images/stock/stadium-crowd.jpg"
-              alt="Stadium crowd under lights during a match"
+              src="/images/stock/vancouver.jpg"
+              alt="Soccer field in Vancouver"
             />
           </div>
           <div>

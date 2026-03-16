@@ -6,7 +6,7 @@ const sections = [
   {
     title: '1. Acceptance of Terms',
     body: [
-      'By accessing or using the Dribbl platform available at teamdribbl.ca and any associated mobile applications (the "Platform"), you agree to be bound by these Terms and Conditions ("Terms"). If you do not agree to these Terms, you must not use the Platform.',
+      'By accessing or using the Dribbl platform available at dribbl.ca and any associated mobile applications (the "Platform"), you agree to be bound by these Terms and Conditions ("Terms"). If you do not agree to these Terms, you must not use the Platform.',
       'If you are under the age of 18, you confirm that a parent or legal guardian has reviewed and agreed to these Terms on your behalf.',
       'These Terms constitute a legally binding agreement between you and Dribbl.',
     ],

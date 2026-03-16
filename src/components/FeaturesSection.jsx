@@ -262,15 +262,15 @@ const FeaturesSection = () => {
       <div
         className="stock-frame reveal delay-2"
         style={{
-          height: isMobile ? 180 : 260,
+          height: isMobile ? 400 : 580,
           marginBottom: isMobile ? 36 : 56,
           borderRadius: 18,
         }}
       >
         <img
           className="stock-img"
-          src="/images/stock/training-run.jpg"
-          alt="Player training on the field"
+          src="/images/stock/kick.jpg"
+          alt="Soccer player kicking the ball"
         />
       </div>
 

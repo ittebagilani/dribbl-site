@@ -175,7 +175,7 @@ const team = [
   {
     name: 'Aruyan Puvanachandran',
     initials: 'AP',
-    role: 'CEO',
+    role: 'Co-founder · CEO',
     university: 'Toronto Metropolitan University · Computer Science',
     bio: 'TMU CS student and passionate soccer athlete focused on improving recruitment and building a national digital soccer community.',
     image: '/images/Aruyan.png',
@@ -184,7 +184,7 @@ const team = [
   {
     name: 'Azish Qureshi',
     initials: 'AZ',
-    role: 'Founding Engineer · Lead Front-End',
+    role: 'Co-founder · Founding Engineer · Lead Front-End',
     university: 'University of Guelph · Computer Science',
     bio: 'Guelph CS student leading the front-end and interested in reinventing soccer through technology.',
     image: '/images/Azish.jpeg',
@@ -202,7 +202,7 @@ const team = [
   {
     name: 'Areesh Khan',
     initials: 'AKH',
-    role: 'CFO',
+    role: 'Co-founder · CFO',
     university: 'York Schulich School of Business · BBA',
     bio: 'Schulich BBA student focused on turning ideas into action through partnerships and go-to-market execution.',
     image: '/images/Areesh.png',

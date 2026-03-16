@@ -152,23 +152,6 @@ const DemoSection = () => {
           </div>
         ))}
       </div>
-
-      <div
-        className="stock-frame"
-        style={{
-          width: '100%',
-          maxWidth: 980,
-          height: isMobile ? 200 : 300,
-          borderRadius: 20,
-        }}
-      >
-        <img
-          className="stock-img"
-          src="/images/stock/aerial-field.jpg"
-          alt="Aerial view of a soccer field"
-        />
-      </div>
-
     </section>
   )
 }

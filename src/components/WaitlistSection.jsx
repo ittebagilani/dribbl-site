@@ -73,7 +73,7 @@ const WaitlistSection = () => {
         }}
       >
         <img
-          src="/images/stock/night-court.jpg"
+          src="/images/stock/waitlist.jpg"
           alt=""
           aria-hidden="true"
           style={{
