@@ -21,8 +21,8 @@ const PitchCanvas = () => {
       const H = canvas.height
 
       ctx.clearRect(0, 0, W, H)
-      ctx.globalAlpha = 0.22
-      ctx.strokeStyle = 'rgba(255,0,64,0.5)'
+      ctx.globalAlpha = 0.32
+      ctx.strokeStyle = 'rgba(255,0,64,0.7)'
       ctx.lineWidth = 1
 
       const PW = 105
@@ -53,7 +53,7 @@ const PitchCanvas = () => {
         ctx.fill()
       }
 
-      ctx.fillStyle = 'rgba(255,0,64,0.5)'
+      ctx.fillStyle = 'rgba(255,0,64,0.7)'
 
       line(0, 0, PW, 0)
       line(PW, 0, PW, PH)
