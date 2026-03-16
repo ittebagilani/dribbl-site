@@ -207,7 +207,7 @@ const HeroSection = () => {
                 display: 'block',
                 fontWeight: 800,
                 fontSize: isTablet ? 'clamp(38px, 11vw, 56px)' : 'clamp(40px, 5vw, 80px)',
-                color: '#F4F4F2',
+                color: 'var(--text)',
                 letterSpacing: '-0.04em',
               }}
             >
@@ -218,7 +218,7 @@ const HeroSection = () => {
                 display: 'block',
                 fontWeight: 800,
                 fontSize: isTablet ? 'clamp(38px, 11vw, 56px)' : 'clamp(40px, 5vw, 80px)',
-                color: '#F4F4F2',
+                color: 'var(--text)',
                 letterSpacing: '-0.04em',
               }}
             >
@@ -242,15 +242,15 @@ const HeroSection = () => {
               fontFamily: 'Manrope, sans-serif',
               fontSize: 14,
               lineHeight: 1.85,
-              color: 'rgba(244,244,242,0.65)',
+              color: 'var(--text-muted)',
               marginBottom: isTablet ? 28 : 40,
               maxWidth: isTablet ? '100%' : 440,
               letterSpacing: '0.02em',
               ...fade(200),
             }}
           >
-            Dribbl is where soccer players showcase their story, connect with
-            teammates, and get discovered by coaches and clubs — all in one place.
+            Dribbl is where soccer players showcase their journey, connect with
+            teammates, and get discovered by coaches and clubs, all in one place.
           </p>
 
           <div
@@ -277,7 +277,7 @@ const HeroSection = () => {
           flex: isTablet ? 'none' : '0 0 50%',
           position: 'relative',
           overflow: 'hidden',
-          background: '#000',
+          background: 'var(--bg-alt)',
           height: isMobile ? '80vw' : isTablet ? '56vw' : undefined,
           marginTop: isTablet ? 40 : undefined,
         }}

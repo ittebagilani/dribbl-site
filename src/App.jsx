@@ -12,6 +12,8 @@ import Footer from './components/Footer'
 import AboutPage from './pages/AboutPage'
 import TeamPage from './pages/TeamPage'
 import ContactPage from './pages/ContactPage'
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
+import TermsPage from './pages/TermsPage'
 import NotFoundPage from './pages/NotFoundPage'
 
 /* ── Scroll to top on route change ─────────────────── */
@@ -46,6 +48,8 @@ const App = () => (
           <Route path="/about"   element={<AboutPage />} />
           <Route path="/team"    element={<TeamPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/privacy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms"   element={<TermsPage />} />
           <Route path="*"        element={<NotFoundPage />} />
         </Routes>
       </main>

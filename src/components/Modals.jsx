@@ -60,7 +60,7 @@ const ModalShell = ({ onClose, children }) => {
             right: 16,
             background: 'none',
             border: '1px solid rgba(255,255,255,0.12)',
-            color: 'rgba(244,244,242,0.6)',
+            color: 'var(--text-muted)',
             width: 32,
             height: 32,
             display: 'flex',
@@ -73,7 +73,7 @@ const ModalShell = ({ onClose, children }) => {
             transition: 'border-color 0.2s, color 0.2s',
           }}
           onMouseEnter={e => { e.currentTarget.style.borderColor = '#FF0040'; e.currentTarget.style.color = '#FF0040' }}
-          onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'; e.currentTarget.style.color = 'rgba(244,244,242,0.6)' }}
+          onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-muted)' }}
           aria-label="Close"
         >
           ×
@@ -155,9 +155,9 @@ const WaitlistModal = ({ onClose }) => {
 
   const inputStyle = {
     width: '100%',
-    background: 'rgba(255,255,255,0.04)',
-    border: '1px solid rgba(255,255,255,0.1)',
-    color: '#F4F4F2',
+    background: 'var(--input-bg)',
+    border: '1px solid var(--border)',
+    color: 'var(--text)',
     fontFamily: 'JetBrains Mono, monospace',
     fontSize: 13,
     padding: '12px 14px',
@@ -176,10 +176,10 @@ const WaitlistModal = ({ onClose }) => {
             <div style={{ fontFamily: 'JetBrains Mono', fontSize: 10, color: '#FF0040', letterSpacing: '0.16em', marginBottom: 20 }}>
               // YOU'RE IN
             </div>
-            <h2 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(26px, 4vw, 36px)', color: '#F4F4F2', letterSpacing: '-0.035em', margin: '0 0 16px', lineHeight: 1.1 }}>
+            <h2 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(26px, 4vw, 36px)', color: 'var(--text)', letterSpacing: '-0.035em', margin: '0 0 16px', lineHeight: 1.1 }}>
               Welcome to Dribbl.
             </h2>
-            <p style={{ fontFamily: 'JetBrains Mono', fontSize: 13, lineHeight: 1.85, color: 'rgba(244,244,242,0.6)', margin: '0 0 32px', letterSpacing: '0.02em' }}>
+            <p style={{ fontFamily: 'JetBrains Mono', fontSize: 13, lineHeight: 1.85, color: 'var(--text-muted)', margin: '0 0 32px', letterSpacing: '0.02em' }}>
               We'll reach out at <span style={{ color: '#FF0040' }}>{email}</span> when we launch.<br />
               Get ready.
             </p>
@@ -197,10 +197,10 @@ const WaitlistModal = ({ onClose }) => {
             <div style={{ fontFamily: 'JetBrains Mono', fontSize: 10, color: '#FF0040', letterSpacing: '0.16em', marginBottom: 20 }}>
               // JOIN THE WAITLIST
             </div>
-            <h2 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(24px, 4vw, 34px)', color: '#F4F4F2', letterSpacing: '-0.035em', margin: '0 0 10px', lineHeight: 1.1 }}>
+            <h2 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(24px, 4vw, 34px)', color: 'var(--text)', letterSpacing: '-0.035em', margin: '0 0 10px', lineHeight: 1.1 }}>
               Get Early Access.
             </h2>
-            <p style={{ fontFamily: 'JetBrains Mono', fontSize: 13, lineHeight: 1.85, color: 'rgba(244,244,242,0.55)', margin: '0 0 32px', letterSpacing: '0.02em' }}>
+            <p style={{ fontFamily: 'JetBrains Mono', fontSize: 13, lineHeight: 1.85, color: 'var(--text-muted)', margin: '0 0 32px', letterSpacing: '0.02em' }}>
               Be first to know when Dribbl launches. No spam, ever.
             </p>
 
@@ -219,7 +219,7 @@ const WaitlistModal = ({ onClose }) => {
                       padding: '10px 12px',
                       background: role === val ? 'rgba(255,0,64,0.12)' : 'rgba(255,255,255,0.03)',
                       border: `1px solid ${role === val ? '#FF0040' : 'rgba(255,255,255,0.1)'}`,
-                      color: role === val ? '#FF0040' : 'rgba(244,244,242,0.6)',
+                      color: role === val ? 'var(--accent)' : 'var(--text-muted)',
                       fontFamily: 'JetBrains Mono, monospace',
                       fontSize: 11,
                       letterSpacing: '0.08em',
@@ -245,8 +245,8 @@ const WaitlistModal = ({ onClose }) => {
                   placeholder="Your name"
                   required
                   style={inputStyle}
-                  onFocus={e => e.target.style.borderColor = 'rgba(255,0,64,0.5)'}
-                  onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.1)'}
+                  onFocus={e => e.target.style.borderColor = 'var(--accent)'}
+                  onBlur={e => e.target.style.borderColor = 'var(--border)'}
                 />
               </div>
 
@@ -261,8 +261,8 @@ const WaitlistModal = ({ onClose }) => {
                   placeholder="you@example.com"
                   required
                   style={inputStyle}
-                  onFocus={e => e.target.style.borderColor = 'rgba(255,0,64,0.5)'}
-                  onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.1)'}
+                  onFocus={e => e.target.style.borderColor = 'var(--accent)'}
+                  onBlur={e => e.target.style.borderColor = 'var(--border)'}
                 />
               </div>
 
@@ -306,10 +306,10 @@ const OpenPositionsModal = ({ onClose }) => {
         <div style={{ fontFamily: 'JetBrains Mono', fontSize: 10, color: '#FF0040', letterSpacing: '0.16em', marginBottom: 20 }}>
           // OPEN POSITIONS
         </div>
-        <h2 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(24px, 4vw, 34px)', color: '#F4F4F2', letterSpacing: '-0.035em', margin: '0 0 12px', lineHeight: 1.1 }}>
+        <h2 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(24px, 4vw, 34px)', color: 'var(--text)', letterSpacing: '-0.035em', margin: '0 0 12px', lineHeight: 1.1 }}>
           Join the Team.
         </h2>
-        <p style={{ fontFamily: 'JetBrains Mono', fontSize: 13, lineHeight: 1.85, color: 'rgba(244,244,242,0.55)', margin: '0 0 40px', letterSpacing: '0.02em' }}>
+        <p style={{ fontFamily: 'JetBrains Mono', fontSize: 13, lineHeight: 1.85, color: 'var(--text-muted)', margin: '0 0 40px', letterSpacing: '0.02em' }}>
           We're a small team moving fast. When we open roles, they'll appear here.
         </p>
 
@@ -324,15 +324,15 @@ const OpenPositionsModal = ({ onClose }) => {
           <div style={{ fontFamily: 'JetBrains Mono', fontSize: 22, color: 'rgba(255,255,255,0.1)', marginBottom: 12 }}>
             ——
           </div>
-          <div style={{ fontFamily: 'JetBrains Mono', fontSize: 12, color: 'rgba(244,244,242,0.5)', letterSpacing: '0.1em' }}>
+          <div style={{ fontFamily: 'JetBrains Mono', fontSize: 12, color: 'var(--text-muted)', letterSpacing: '0.1em' }}>
             NO CURRENT OPENINGS
           </div>
-          <p style={{ fontFamily: 'JetBrains Mono', fontSize: 12, color: 'rgba(244,244,242,0.35)', margin: '12px 0 0', letterSpacing: '0.02em', lineHeight: 1.7 }}>
+          <p style={{ fontFamily: 'JetBrains Mono', fontSize: 12, color: 'var(--text-faint)', margin: '12px 0 0', letterSpacing: '0.02em', lineHeight: 1.7 }}>
             Check back soon — we're growing.
           </p>
         </div>
 
-        <p style={{ fontFamily: 'JetBrains Mono', fontSize: 12, color: 'rgba(244,244,242,0.5)', margin: '0 0 20px', letterSpacing: '0.02em', lineHeight: 1.7 }}>
+        <p style={{ fontFamily: 'JetBrains Mono', fontSize: 12, color: 'var(--text-muted)', margin: '0 0 20px', letterSpacing: '0.02em', lineHeight: 1.7 }}>
           Passionate about soccer and tech? Reach out anyway —<br />
           we love meeting people who care about the game.
         </p>

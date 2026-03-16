@@ -18,93 +18,6 @@ const useReveal = (threshold = 0.15) => {
   return [ref, visible]
 }
 
-/* ── Analysis canvas placeholder ────────────────────── */
-const AnalysisCanvas = () => {
-  const canvasRef = useRef(null)
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-    const ctx = canvas.getContext('2d')
-    let raf, time = 0
-
-    const resize = () => { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight }
-
-    const animate = () => {
-      const W = canvas.width, H = canvas.height
-      const cx = W / 2, cy = H / 2
-      time += 0.012
-      ctx.fillStyle = 'rgba(10,10,10,0.15)'
-      ctx.fillRect(0, 0, W, H)
-
-      // Radar rings
-      for (let r = 1; r <= 4; r++) {
-        const radius = (r / 4) * Math.min(cx, cy) * 0.85
-        ctx.beginPath()
-        ctx.arc(cx, cy, radius, 0, Math.PI * 2)
-        ctx.strokeStyle = `rgba(255,0,64,${0.06 + r * 0.03})`
-        ctx.lineWidth = 0.8
-        ctx.stroke()
-      }
-      // Radar axes
-      for (let i = 0; i < 6; i++) {
-        const angle = (i / 6) * Math.PI * 2
-        ctx.beginPath()
-        ctx.moveTo(cx, cy)
-        ctx.lineTo(cx + Math.cos(angle) * Math.min(cx, cy) * 0.85, cy + Math.sin(angle) * Math.min(cx, cy) * 0.85)
-        ctx.strokeStyle = 'rgba(255,0,64,0.08)'
-        ctx.lineWidth = 0.8
-        ctx.stroke()
-      }
-
-      // Stat polygon (animated)
-      const stats = [0.82, 0.91, 0.74, 0.88, 0.95, 0.79]
-      const animated = stats.map((v, i) => v * (0.85 + Math.sin(time + i * 0.7) * 0.08))
-      const maxR = Math.min(cx, cy) * 0.85
-      ctx.beginPath()
-      animated.forEach((v, i) => {
-        const angle = (i / 6) * Math.PI * 2 - Math.PI / 2
-        const x = cx + Math.cos(angle) * v * maxR
-        const y = cy + Math.sin(angle) * v * maxR
-        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y)
-      })
-      ctx.closePath()
-      ctx.fillStyle = 'rgba(255,0,64,0.07)'
-      ctx.fill()
-      ctx.strokeStyle = 'rgba(255,0,64,0.5)'
-      ctx.lineWidth = 1.5
-      ctx.stroke()
-
-      // Nodes
-      animated.forEach((v, i) => {
-        const angle = (i / 6) * Math.PI * 2 - Math.PI / 2
-        ctx.beginPath()
-        ctx.arc(cx + Math.cos(angle) * v * maxR, cy + Math.sin(angle) * v * maxR, 3, 0, Math.PI * 2)
-        ctx.fillStyle = '#FF0040'
-        ctx.fill()
-      })
-
-      // Scan line
-      const scanAngle = time * 0.8
-      ctx.beginPath()
-      ctx.moveTo(cx, cy)
-      ctx.lineTo(cx + Math.cos(scanAngle) * maxR, cy + Math.sin(scanAngle) * maxR)
-      ctx.strokeStyle = 'rgba(255,0,64,0.3)'
-      ctx.lineWidth = 1
-      ctx.stroke()
-
-      raf = requestAnimationFrame(animate)
-    }
-
-    resize()
-    animate()
-    const ro = new ResizeObserver(resize)
-    ro.observe(canvas)
-    return () => { cancelAnimationFrame(raf); ro.disconnect() }
-  }, [])
-
-  return <canvas ref={canvasRef} style={{ display: 'block', width: '100%', height: '100%' }} />
-}
-
 /* ── Value card ─────────────────────────────────────── */
 const ValueCard = ({ title, desc, index }) => {
   const [ref, visible] = useReveal()
@@ -125,10 +38,10 @@ const ValueCard = ({ title, desc, index }) => {
         <div style={{
           padding: '32px 28px',
           background: hovered ? 'rgba(255,0,64,0.03)' : 'transparent',
-          borderTop: '1px solid rgba(255,255,255,0.08)',
-          borderRight: '1px solid rgba(255,255,255,0.08)',
-          borderBottom: '1px solid rgba(255,255,255,0.08)',
-          borderLeft: '1px solid rgba(255,255,255,0.08)',
+          borderTop: '1px solid var(--border)',
+          borderRight: '1px solid var(--border)',
+          borderBottom: '1px solid var(--border)',
+          borderLeft: '1px solid var(--border)',
           transition: 'background 0.25s',
           height: '100%',
           boxSizing: 'border-box',
@@ -136,10 +49,10 @@ const ValueCard = ({ title, desc, index }) => {
           <div style={{ fontFamily: 'Manrope', fontSize: 10, color: '#FF0040', letterSpacing: '0.14em', marginBottom: 14 }}>
             {String(index + 1).padStart(2, '0')}
           </div>
-          <h3 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 18, color: '#F4F4F2', letterSpacing: '-0.02em', margin: '0 0 12px' }}>
+          <h3 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 18, color: 'var(--text)', letterSpacing: '-0.02em', margin: '0 0 12px' }}>
             {title}
           </h3>
-          <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.85, color: 'rgba(244,244,242,0.65)', margin: 0, letterSpacing: '0.02em' }}>
+          <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.85, color: 'var(--text-muted)', margin: 0, letterSpacing: '0.02em' }}>
             {desc}
           </p>
         </div>
@@ -149,9 +62,18 @@ const ValueCard = ({ title, desc, index }) => {
 }
 
 const values = [
-  { title: 'Innovation & Technology', desc: 'We leverage cutting-edge AI and computer vision to revolutionize how talent is discovered in soccer.' },
-  { title: 'Opportunity for All', desc: 'We believe talent exists everywhere. Our platform breaks down traditional barriers to scouting and recruitment.' },
-  { title: 'Global Reach', desc: 'Connecting players worldwide with scouts and clubs across all continents, levels, and leagues.' },
+  {
+    title: 'Community',
+    desc: 'Soccer is more than a sport. It is a community where players and coaches connect, support one another, and grow together.',
+  },
+  {
+    title: 'Opportunity',
+    desc: 'Talent exists everywhere. Dribbl gives players the opportunity to showcase their abilities and build their soccer presence.',
+  },
+  {
+    title: 'Passion for the Game',
+    desc: 'Built for people who love soccer and want to keep improving, competing, and sharing their journey.',
+  },
 ]
 
 /* ── About Page ─────────────────────────────────────── */
@@ -172,40 +94,63 @@ const AboutPage = () => {
       <section
         ref={heroRef}
         style={{
-          background: '#0A0A0A',
+          background: 'var(--dark)',
           padding: isMobile ? '120px 24px 80px' : '160px 80px 100px',
           borderBottom: '1px solid rgba(255,255,255,0.06)',
         }}
       >
-        <div style={{ maxWidth: 800 }}>
-          <div className="overline" style={{ marginBottom: 24, ...fade(heroVisible, 0) }}>
-            // ABOUT DRIBBL
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: isMobile ? '1fr' : '1.1fr 0.9fr',
+            gap: isMobile ? 32 : 80,
+            alignItems: 'center',
+          }}
+        >
+          <div style={{ maxWidth: 800 }}>
+            <div className="overline" style={{ marginBottom: 24, ...fade(heroVisible, 0) }}>
+              // ABOUT DRIBBL
+            </div>
+            <h1 style={{
+              fontFamily: 'Inter',
+              fontWeight: 800,
+              fontSize: 'clamp(36px, 5vw, 72px)',
+              color: 'var(--text)',
+              letterSpacing: '-0.04em',
+              lineHeight: 1.05,
+              margin: '0 0 28px',
+              ...fade(heroVisible, 100),
+            }}>
+              Building the Future of Soccer Networking
+            </h1>
+            <p style={{
+              fontFamily: 'Manrope',
+              fontSize: 15,
+              lineHeight: 1.9,
+              color: 'var(--text-muted)',
+              maxWidth: 560,
+              margin: 0,
+              letterSpacing: '0.02em',
+              ...fade(heroVisible, 200),
+            }}>
+              Dribbl is a soccer networking platform where players and coaches can connect,
+              share their journey, and showcase their talent to the soccer community.
+            </p>
           </div>
-          <h1 style={{
-            fontFamily: 'Inter',
-            fontWeight: 800,
-            fontSize: 'clamp(36px, 5vw, 72px)',
-            color: '#F4F4F2',
-            letterSpacing: '-0.04em',
-            lineHeight: 1.05,
-            margin: '0 0 28px',
-            ...fade(heroVisible, 100),
-          }}>
-            Building the Future<br />of Soccer Scouting.
-          </h1>
-          <p style={{
-            fontFamily: 'Manrope',
-            fontSize: 15,
-            lineHeight: 1.9,
-            color: 'rgba(244,244,242,0.65)',
-            maxWidth: 560,
-            margin: 0,
-            letterSpacing: '0.02em',
-            ...fade(heroVisible, 200),
-          }}>
-            Dribbl is revolutionizing talent discovery in soccer with AI-powered analysis,
-            connecting promising players with scouts and clubs worldwide.
-          </p>
+          <div
+            className="stock-frame"
+            style={{
+              height: isMobile ? 220 : 360,
+              borderRadius: 22,
+              ...fade(heroVisible, 250),
+            }}
+          >
+            <img
+              className="stock-img"
+              src="/images/stock/coach-talk.jpg"
+              alt="Coach speaking with players on the field"
+            />
+          </div>
         </div>
       </section>
 
@@ -224,78 +169,82 @@ const AboutPage = () => {
       >
         <div style={fade(missionVisible, 0)}>
           <div className="overline" style={{ marginBottom: 20 }}>// OUR MISSION</div>
-          <h2 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(28px, 3.5vw, 48px)', color: '#F4F4F2', letterSpacing: '-0.035em', margin: 0, lineHeight: 1.1 }}>
+          <h2 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(28px, 3.5vw, 48px)', color: 'var(--text)', letterSpacing: '-0.035em', margin: 0, lineHeight: 1.1 }}>
             No barrier should stand between talent and opportunity.
           </h2>
         </div>
-        <p style={{ fontFamily: 'Manrope', fontSize: 14, lineHeight: 1.95, color: 'rgba(244,244,242,0.65)', margin: 0, letterSpacing: '0.02em', ...fade(missionVisible, 150) }}>
-          To democratize soccer scouting by creating the world's most advanced AI-powered
-          platform that connects talented players with clubs and scouts, ensuring no exceptional
-          talent goes undiscovered regardless of geographical or financial barriers.
+        <p style={{ fontFamily: 'Manrope', fontSize: 14, lineHeight: 1.95, color: 'var(--text-muted)', margin: 0, letterSpacing: '0.02em', ...fade(missionVisible, 150) }}>
+          Our mission is to give every soccer player a place to build their digital soccer identity.
+          Dribbl allows players to showcase their skills, share their progress, and connect with
+          other players and coaches across the country.
         </p>
       </section>
 
-      {/* ── AI + Global split ── */}
-      <section style={{
-        display: 'grid',
-        gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-        // borderBottom: '1px solid rgba(10,10,10,0.08)',
-      }}>
-        {/* AI Card */}
-        <div style={{
-          background: '#0A0A0A',
-          padding: isMobile ? '60px 24px' : '80px 60px',
-          borderRight: isMobile ? 'none' : '1px solid rgba(255,255,255,0.06)',
-          borderBottom: isMobile ? 'none' : 'none',
-        }}>
-          <div className="overline" style={{ marginBottom: 20 }}>// AI-POWERED SCOUTING</div>
-          <h3 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(22px, 2.5vw, 32px)', color: '#F4F4F2', letterSpacing: '-0.03em', margin: '0 0 16px' }}>
-            Computer vision that sees what scouts miss.
-          </h3>
-          <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.9, color: 'rgba(244,244,242,0.6)', margin: 0, letterSpacing: '0.02em' }}>
-            Using cutting-edge computer vision to analyze player technique, movement patterns,
-            and untapped potential — generating 200+ data points per session in real time.
-          </p>
-        </div>
-
-        {/* Global Card */}
-        <div style={{ background: 'var(--dark)', padding: isMobile ? '60px 24px' : '80px 60px' }}>
-          <div className="overline" style={{ marginBottom: 20 }}>// GLOBAL CONNECTION</div>
-          <h3 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(22px, 2.5vw, 32px)', color: '#F4F4F2', letterSpacing: '-0.03em', margin: '0 0 16px' }}>
-            From Lagos to Tokyo. Every talent, every scout.
-          </h3>
-          <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.9, color: 'rgba(244,244,242,0.65)', margin: 0, letterSpacing: '0.02em' }}>
-            Bridging the gap between talented players and scouts across 140+ countries.
-            No gatekeepers. No geography. Just talent meeting opportunity.
-          </p>
+      {/* ── Digital Profiles ── */}
+      <section style={{ background: 'var(--dark)', padding: isMobile ? '72px 24px' : '100px 80px', borderBottom: '1px solid var(--border-weak)' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+            gap: isMobile ? 32 : 70,
+            alignItems: 'center',
+          }}
+        >
+          <div>
+            <div className="overline" style={{ marginBottom: 20 }}>// DIGITAL SOCCER PROFILES</div>
+            <h3 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(24px, 3vw, 40px)', color: 'var(--text)', letterSpacing: '-0.03em', margin: '0 0 16px' }}>
+              Your soccer journey, all in one place.
+            </h3>
+            <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.9, color: 'var(--text-muted)', margin: 0, maxWidth: 780, letterSpacing: '0.02em' }}>
+              Create your personal soccer profile and showcase your highlights, achievements, and progress.
+              Dribbl gives players the tools to build their digital soccer portfolio and share their talent
+              with coaches and other players.
+            </p>
+          </div>
+          <div className="stock-frame" style={{ height: isMobile ? 220 : 300, borderRadius: 20 }}>
+            <img
+              className="stock-img"
+              src="/images/stock/balls-training.jpg"
+              alt="Soccer balls lined up on the training field"
+            />
+          </div>
         </div>
       </section>
 
-      {/* ── Analysis canvas ── */}
-      <section style={{ background: '#0A0A0A', padding: isMobile ? '60px 24px' : '80px 80px' }}>
-        <div className="overline" style={{ marginBottom: 20 }}>// ANALYSIS VISUALIZATION</div>
-        <h2 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(24px, 3vw, 40px)', color: '#F4F4F2', letterSpacing: '-0.03em', margin: '0 0 48px' }}>
-          Coming Soon.
-        </h2>
-        <TechBracket color="#FF0040" size={12} style={{ display: 'block' }}>
-          <div style={{ height: isMobile ? 260 : 360, position: 'relative', background: '#000', overflow: 'hidden' }}>
-            <AnalysisCanvas />
-            <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8, zIndex: 2 }}>
-              <div style={{ fontFamily: 'Manrope', fontSize: isMobile ? 10 : 11, color: 'rgba(244,244,242,0.5)', letterSpacing: '0.18em' }}>
-                ANALYSIS VISUALIZATION COMING SOON
-              </div>
-              <div style={{ fontFamily: 'Manrope', fontSize: 9, color: 'rgba(255,0,64,0.5)', letterSpacing: '0.12em' }}>
-                // RADAR PREVIEW ACTIVE
-              </div>
-            </div>
+      {/* ── National Connection ── */}
+      <section style={{ background: 'var(--dark)', padding: isMobile ? '72px 24px' : '100px 80px' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: isMobile ? '1fr' : '0.9fr 1.1fr',
+            gap: isMobile ? 32 : 70,
+            alignItems: 'center',
+          }}
+        >
+          <div className="stock-frame" style={{ height: isMobile ? 220 : 300, borderRadius: 20 }}>
+            <img
+              className="stock-img"
+              src="/images/stock/stadium-crowd.jpg"
+              alt="Stadium crowd under lights during a match"
+            />
           </div>
-        </TechBracket>
+          <div>
+            <div className="overline" style={{ marginBottom: 20 }}>// GLOBAL CONNECTION</div>
+            <h3 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(24px, 3vw, 40px)', color: 'var(--text)', letterSpacing: '-0.03em', margin: '0 0 16px' }}>
+              From Vancouver to Halifax. Every talent, every scout.
+            </h3>
+            <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.9, color: 'var(--text-muted)', margin: 0, maxWidth: 820, letterSpacing: '0.02em' }}>
+              Bridging the gap between talented players and scouts across the country.
+              No gatekeepers. No geography. Just talent meeting opportunity.
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* ── Values ── */}
       <section style={{ background: 'var(--dark)', padding: isMobile ? '72px 24px' : '100px 80px' }}>
         <div className="overline" style={{ marginBottom: 20 }}>// OUR VALUES</div>
-        <h2 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(28px, 3.5vw, 48px)', color: '#F4F4F2', letterSpacing: '-0.035em', margin: '0 0 60px', maxWidth: 500 }}>
+        <h2 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(28px, 3.5vw, 48px)', color: 'var(--text)', letterSpacing: '-0.035em', margin: '0 0 60px', maxWidth: 500 }}>
           These core principles guide everything we do.
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: isMobile ? 12 : 2 }}>

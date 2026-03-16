@@ -22,7 +22,7 @@ const DiamondLogo = ({ size = 28 }) => (
         transform: 'translate(-50%, -50%)',
         width: size * 0.36,
         height: size * 0.36,
-        background: '#0A0A0A',
+        background: 'var(--bg)',
         clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)',
       }}
     />
@@ -50,7 +50,7 @@ const NavLink = ({ label, to, onClick }) => {
         fontSize: 14,
         textDecoration: 'none',
         letterSpacing: '0.04em',
-        color: '#F4F4F2',
+        color: 'var(--text)',
         whiteSpace: 'nowrap',
         display: 'block',
         position: 'relative',
@@ -99,7 +99,7 @@ const Hamburger = ({ open, onClick }) => (
           display: 'block',
           width: 22,
           height: 1.5,
-          background: '#F4F4F2',
+      background: 'var(--text)',
           borderRadius: 1,
           transformOrigin: 'center',
           transition: 'transform 0.25s ease, opacity 0.25s ease, width 0.25s ease',
@@ -124,7 +124,7 @@ const MobileMenu = ({ open, onClose, onWaitlist }) => (
       position: 'fixed',
       inset: 0,
       zIndex: 998,
-      background: 'rgba(10,10,10,0.97)',
+      background: 'var(--nav-bg-strong)',
       backdropFilter: 'blur(20px)',
       WebkitBackdropFilter: 'blur(20px)',
       display: 'flex',
@@ -146,7 +146,7 @@ const MobileMenu = ({ open, onClose, onWaitlist }) => (
           fontFamily: 'Inter, sans-serif',
           fontWeight: 800,
           fontSize: 32,
-          color: '#F4F4F2',
+          color: 'var(--text)',
           textDecoration: 'none',
           letterSpacing: '-0.03em',
           opacity: open ? 1 : 0,
@@ -221,12 +221,12 @@ const Navbar = () => {
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
           backgroundColor: scrolled
-            ? 'rgba(10,10,10,0.95)'
-            : 'rgba(10,10,10,0.90)',
+            ? 'var(--nav-bg-strong)'
+            : 'var(--nav-bg)',
           border: scrolled
-            ? '1px solid rgba(255,255,255,0.08)'
+            ? '1px solid var(--nav-border)'
             : '1px solid transparent',
-          borderBottom: !scrolled ? '1px solid rgba(255,255,255,0.06)' : undefined,
+          borderBottom: !scrolled ? '1px solid var(--nav-border-bottom)' : undefined,
           boxShadow: scrolled
             ? '0 4px 28px rgba(0,0,0,0.08), 0 1px 6px rgba(0,0,0,0.04)'
             : 'none',
@@ -284,14 +284,14 @@ const Navbar = () => {
                   style={{
                     fontFamily: 'Manrope, sans-serif',
                     fontSize: 11,
-                    color: 'rgba(244,244,242,0.55)',
+                    color: 'var(--text-muted)',
                     letterSpacing: '0.08em',
                   }}
                 >
                   v 1.0
                 </span>
               )}
-              <TechBracket size={6} color="#FF0040">
+              <TechBracket size={6} color="var(--accent)">
                 <button
                   className="btn-dark"
                   onClick={openWaitlist}
@@ -310,7 +310,11 @@ const Navbar = () => {
 
       {/* Mobile fullscreen overlay */}
       {isMobile && (
-        <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} onWaitlist={openWaitlist} />
+        <MobileMenu
+          open={menuOpen}
+          onClose={() => setMenuOpen(false)}
+          onWaitlist={openWaitlist}
+        />
       )}
     </>
   )

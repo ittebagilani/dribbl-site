@@ -139,7 +139,7 @@ const FeatureCard = ({ Icon, title, subtitle, desc, bullets, delay, visible }) =
               fontFamily: 'Inter, sans-serif',
               fontWeight: 800,
               fontSize: 18,
-              color: '#F4F4F2',
+              color: 'var(--text)',
               letterSpacing: '-0.02em',
               margin: '0 0 14px',
               lineHeight: 1.2,
@@ -152,7 +152,7 @@ const FeatureCard = ({ Icon, title, subtitle, desc, bullets, delay, visible }) =
               fontFamily: 'Manrope, sans-serif',
               fontSize: 14,
               lineHeight: 1.9,
-              color: 'rgba(244,244,242,0.65)',
+              color: 'var(--text-muted)',
               margin: '0 0 18px',
               letterSpacing: '0.02em',
             }}
@@ -166,7 +166,7 @@ const FeatureCard = ({ Icon, title, subtitle, desc, bullets, delay, visible }) =
                 style={{
                   fontFamily: 'Manrope, sans-serif',
                   fontSize: 11,
-                  color: 'rgba(244,244,242,0.55)',
+                  color: 'var(--text-muted)',
                   letterSpacing: '0.02em',
                   lineHeight: 1.7,
                   paddingLeft: 14,
@@ -220,7 +220,7 @@ const FeaturesSection = () => {
     <section
       ref={sectionRef}
       style={{
-        background: '#0A0A0A',
+        background: 'var(--dark)',
         padding: isMobile ? '72px 20px' : '120px 80px',
       }}
     >
@@ -235,7 +235,7 @@ const FeaturesSection = () => {
             fontFamily: 'Inter, sans-serif',
             fontWeight: 800,
             fontSize: 'clamp(30px, 4vw, 58px)',
-            color: '#F4F4F2',
+            color: 'var(--text)',
             letterSpacing: '-0.035em',
             margin: '0 0 16px',
             lineHeight: 1.05,
@@ -249,7 +249,7 @@ const FeaturesSection = () => {
             fontFamily: 'Manrope, sans-serif',
             fontSize: 14,
             lineHeight: 1.85,
-            color: 'rgba(244,244,242,0.65)',
+            color: 'var(--text-muted)',
             margin: 0,
             maxWidth: 560,
             letterSpacing: '0.02em',
@@ -257,6 +257,21 @@ const FeaturesSection = () => {
         >
           Dribbl brings together the people that make soccer happen — all on one platform.
         </p>
+      </div>
+
+      <div
+        className="stock-frame reveal delay-2"
+        style={{
+          height: isMobile ? 180 : 260,
+          marginBottom: isMobile ? 36 : 56,
+          borderRadius: 18,
+        }}
+      >
+        <img
+          className="stock-img"
+          src="/images/stock/training-run.jpg"
+          alt="Player training on the field"
+        />
       </div>
 
       {/* Grid */}

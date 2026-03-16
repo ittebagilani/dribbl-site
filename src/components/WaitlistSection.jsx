@@ -58,12 +58,34 @@ const WaitlistSection = () => {
           inset: 0,
           pointerEvents: 'none',
           opacity: 0.03,
+          zIndex: 1,
           backgroundImage:
             'repeating-linear-gradient(90deg, #FF0040 0px, #FF0040 1px, transparent 1px, transparent 60px)',
         }}
       />
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          opacity: 0.16,
+          pointerEvents: 'none',
+          zIndex: 0,
+        }}
+      >
+        <img
+          src="/images/stock/night-court.jpg"
+          alt=""
+          aria-hidden="true"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            filter: 'saturate(0.9) contrast(1.1)',
+          }}
+        />
+      </div>
 
-      <div style={{ position: 'relative', zIndex: 1, width: '100%', maxWidth: 640 }}>
+      <div style={{ position: 'relative', zIndex: 2, width: '100%', maxWidth: 640 }}>
         {/* Overline */}
         <div className="overline" style={{ marginBottom: 20, ...fade(0) }}>
           // JOIN DRIBBL FOR FREE
@@ -75,7 +97,7 @@ const WaitlistSection = () => {
             fontFamily: 'Inter, sans-serif',
             fontWeight: 800,
             fontSize: 'clamp(34px, 4vw, 60px)',
-            color: '#F4F4F2',
+            color: 'var(--text)',
             letterSpacing: '-0.04em',
             margin: '0 0 20px',
             lineHeight: 1.05,
@@ -91,7 +113,7 @@ const WaitlistSection = () => {
             fontFamily: 'Manrope, sans-serif',
             fontSize: 14,
             lineHeight: 1.9,
-            color: 'rgba(244,244,242,0.65)',
+            color: 'var(--text-muted)',
             margin: '0 0 48px',
             letterSpacing: '0.02em',
             ...fade(200),

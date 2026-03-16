@@ -10,12 +10,12 @@ const NotFoundPage = () => {
 
   return (
     <>
-      <section style={{ background: '#0A0A0A', padding: isMobile ? '120px 24px 80px' : '160px 80px 120px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+      <section style={{ background: 'var(--dark)', padding: isMobile ? '120px 24px 80px' : '160px 80px 120px', borderBottom: '1px solid var(--border-weak)' }}>
         <div className="overline" style={{ marginBottom: 24 }}>// 404</div>
-        <h1 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(40px, 7vw, 96px)', color: '#F4F4F2', letterSpacing: '-0.05em', lineHeight: 0.95, margin: '0 0 18px' }}>
+        <h1 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(40px, 7vw, 96px)', color: 'var(--text)', letterSpacing: '-0.05em', lineHeight: 0.95, margin: '0 0 18px' }}>
           Page not found.
         </h1>
-        <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.9, color: 'rgba(244,244,242,0.6)', maxWidth: 560, margin: '0 0 32px', letterSpacing: '0.02em' }}>
+        <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.9, color: 'var(--text-muted)', maxWidth: 560, margin: '0 0 32px', letterSpacing: '0.02em' }}>
           The page you’re looking for doesn’t exist or has moved. Head back home or join the waitlist to stay in the loop.
         </p>
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
@@ -51,7 +51,7 @@ const NotFoundPage = () => {
                 style={{
                   fontFamily: 'Manrope, sans-serif',
                   fontSize: 12,
-                  color: 'rgba(244,244,242,0.6)',
+                  color: 'var(--text-muted)',
                   textDecoration: 'none',
                   letterSpacing: '0.08em',
                   textTransform: 'uppercase',

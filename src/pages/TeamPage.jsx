@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react'
+import { Linkedin } from 'lucide-react'
 import TechBracket from '../components/TechBracket'
 import Footer from '../components/Footer'
 import { useBreakpoint } from '../hooks/useBreakpoint'
@@ -29,11 +30,11 @@ const Avatar = ({ initials, index, image }) => {
   }
 
   const palettes = [
-    { bg: '#0A0A0A', accent: '#FF0040', shape: 'diamond' },
+    { bg: 'var(--bg)', accent: '#FF0040', shape: 'diamond' },
     { bg: '#1A0008', accent: '#FF0040', shape: 'hexagon' },
-    { bg: '#0A0A0A', accent: '#FF0040', shape: 'triangle' },
+    { bg: 'var(--bg)', accent: '#FF0040', shape: 'triangle' },
     { bg: '#1A0008', accent: '#FF0040', shape: 'cross' },
-    { bg: '#0A0A0A', accent: '#FF0040', shape: 'circle' },
+    { bg: 'var(--bg)', accent: '#FF0040', shape: 'circle' },
   ]
   const { bg, accent, shape } = palettes[index % palettes.length]
 
@@ -72,7 +73,7 @@ const Avatar = ({ initials, index, image }) => {
         fontFamily: 'Inter',
         fontWeight: 800,
         fontSize: 20,
-        color: '#F4F4F2',
+        color: 'var(--text)',
         letterSpacing: '-0.02em',
         position: 'relative',
         zIndex: 1,
@@ -84,7 +85,7 @@ const Avatar = ({ initials, index, image }) => {
 }
 
 /* ── Team member card ───────────────────────────────── */
-const MemberCard = ({ name, role, university, bio, initials, index, image }) => {
+const MemberCard = ({ name, role, university, bio, initials, index, image, linkedin }) => {
   const [hovered, setHovered] = useState(false)
   const ref = useRef(null)
   const [visible, setVisible] = useState(false)
@@ -114,26 +115,54 @@ const MemberCard = ({ name, role, university, bio, initials, index, image }) => 
         <div style={{
           padding: '32px 28px',
           background: hovered ? 'rgba(255,255,255,0.04)' : 'transparent',
-          border: '1px solid rgba(255,255,255,0.08)',
+          border: '1px solid var(--border)',
           transition: 'background 0.25s',
           height: '100%',
           boxSizing: 'border-box',
+          position: 'relative',
         }}>
+          {/* LinkedIn button — top right */}
+          <a
+            href={linkedin || '#'}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${name} on LinkedIn`}
+            style={{
+              position: 'absolute',
+              top: 20,
+              right: 20,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: 32,
+              height: 32,
+              borderRadius: '50%',
+              border: '1px solid rgba(255,0,64,0.3)',
+              color: '#FF0040',
+              textDecoration: 'none',
+              transition: 'background 0.2s, border-color 0.2s',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,0,64,0.12)'; e.currentTarget.style.borderColor = '#FF0040' }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'rgba(255,0,64,0.3)' }}
+          >
+            <Linkedin size={13} strokeWidth={1.8} />
+          </a>
+
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: 20, marginBottom: 24 }}>
             <Avatar initials={initials} index={index} image={image} />
             <div>
-              <h3 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 18, color: '#F4F4F2', letterSpacing: '-0.025em', margin: '0 0 4px' }}>
+              <h3 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 18, color: 'var(--text)', letterSpacing: '-0.025em', margin: '0 0 4px' }}>
                 {name}
               </h3>
               <div style={{ fontFamily: 'Manrope', fontSize: 10, color: '#FF0040', letterSpacing: '0.1em', marginBottom: 6 }}>
                 {role}
               </div>
-              <div style={{ fontFamily: 'Manrope', fontSize: 10, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.04em' }}>
+              <div style={{ fontFamily: 'Manrope', fontSize: 10, color: 'var(--text-faint)', letterSpacing: '0.04em' }}>
                 {university}
               </div>
             </div>
           </div>
-          <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.85, color: 'rgba(244,244,242,0.65)', margin: 0, letterSpacing: '0.02em' }}>
+          <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.85, color: 'var(--text-muted)', margin: 0, letterSpacing: '0.02em' }}>
             {bio}
           </p>
         </div>
@@ -150,6 +179,7 @@ const team = [
     university: 'Toronto Metropolitan University · Computer Science',
     bio: 'TMU CS student and passionate soccer athlete focused on improving recruitment and building a national digital soccer community.',
     image: '/images/Aruyan.png',
+    linkedin: 'https://www.linkedin.com/in/aruyanpuva23/',
   },
   {
     name: 'Azish Qureshi',
@@ -158,6 +188,7 @@ const team = [
     university: 'University of Guelph · Computer Science',
     bio: 'Guelph CS student leading the front-end and interested in reinventing soccer through technology.',
     image: '/images/Azish.jpeg',
+    linkedin: 'https://www.linkedin.com/in/azishq/',
   },
   {
     name: 'Akram Kai',
@@ -166,14 +197,16 @@ const team = [
     university: 'University of Toronto · Computer Science',
     bio: 'U of T CS student passionate about disrupting the soccer industry through scalable product and infrastructure.',
     image: '/images/Akram.png',
+    linkedin: 'https://www.linkedin.com/in/akram-klai-308a54285/',
   },
   {
     name: 'Areesh Khan',
     initials: 'AKH',
-    role: 'Co-founder · Partnership Development',
+    role: 'CFO',
     university: 'York Schulich School of Business · BBA',
     bio: 'Schulich BBA student focused on turning ideas into action through partnerships and go-to-market execution.',
     image: '/images/Areesh.png',
+    linkedin: 'https://www.linkedin.com/in/areesh-khan-555084299/',
   },
   {
     name: 'Edris Adel',
@@ -182,6 +215,7 @@ const team = [
     university: 'Wilfrid Laurier University · Computer Science',
     bio: 'Wilfrid Laurier CS student learning AI and applying it to scouting, insights, and player development.',
     image: '/images/Edris.jpeg',
+    linkedin: 'https://www.linkedin.com/in/edrisadel/',
   },
   {
     name: 'Mohammed',
@@ -190,6 +224,7 @@ const team = [
     university: 'Carleton University · Computer Science',
     bio: 'Carleton CS student and founding engineer focused on building reliable product foundations.',
     image: '/images/Mohamed.jpeg',
+    linkedin: 'https://www.linkedin.com/in/elshoubky-m/',
   },
   {
     name: 'Noor',
@@ -198,6 +233,7 @@ const team = [
     university: 'University of Ottawa · Computer Science',
     bio: 'UOttawa CS student building core platform features and a smooth player experience.',
     image: '/images/Noor.jpeg',
+    linkedin: 'https://www.linkedin.com/in/noor-qureshi-4ba557261/',
   },
   {
     name: 'Taisho',
@@ -206,6 +242,7 @@ const team = [
     university: 'Sheridan College · Film and Video',
     bio: 'Sheridan film and video student crafting storytelling and visual content for the Dribbl community.',
     image: '/images/Taisho.jpeg',
+    linkedin: 'https://www.linkedin.com/in/taisho-yamanaka-49b178299/',
   },
 ]
 
@@ -216,12 +253,12 @@ const TeamPage = () => {
   return (
     <>
       {/* ── Hero ── */}
-      <section style={{ background: '#0A0A0A', padding: isMobile ? '120px 24px 80px' : '160px 80px 100px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+      <section style={{ background: 'var(--dark)', padding: isMobile ? '120px 24px 80px' : '160px 80px 100px', borderBottom: '1px solid var(--border-weak)' }}>
         <div className="overline" style={{ marginBottom: 24 }}>// THE TEAM</div>
-        <h1 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(36px, 5vw, 72px)', color: '#F4F4F2', letterSpacing: '-0.04em', lineHeight: 1.05, margin: '0 0 24px' }}>
+        <h1 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(36px, 5vw, 72px)', color: 'var(--text)', letterSpacing: '-0.04em', lineHeight: 1.05, margin: '0 0 24px' }}>
           The People Behind Dribbl.
         </h1>
-        <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.9, color: 'rgba(244,244,242,0.6)', maxWidth: 560, margin: 0, letterSpacing: '0.02em' }}>
+        <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.9, color: 'var(--text-muted)', maxWidth: 560, margin: 0, letterSpacing: '0.02em' }}>
           A diverse team of soccer enthusiasts, tech innovators, and specialists united by
           one mission — ensuring no exceptional talent goes undiscovered.
         </p>
@@ -240,12 +277,12 @@ const TeamPage = () => {
           ))}
         </div>
         {/* Join CTA card */}
-        <div style={{ border: '1px solid rgba(255,255,255,0.08)', padding: isMobile ? '32px 24px' : '40px 36px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'var(--dark)' }}>
+        <div style={{ border: '1px solid var(--border)', padding: isMobile ? '32px 24px' : '40px 36px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'var(--dark)' }}>
           <div className="overline" style={{ marginBottom: 16 }}>// JOIN THE TEAM</div>
-          <h3 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(20px, 2.5vw, 28px)', color: '#F4F4F2', letterSpacing: '-0.03em', margin: '0 0 16px' }}>
+          <h3 style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 'clamp(20px, 2.5vw, 28px)', color: 'var(--text)', letterSpacing: '-0.03em', margin: '0 0 16px' }}>
             We're always looking for passionate people.
           </h3>
-          <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.85, color: 'rgba(244,244,242,0.65)', margin: '0 0 28px', letterSpacing: '0.02em' }}>
+          <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.85, color: 'var(--text-muted)', margin: '0 0 28px', letterSpacing: '0.02em' }}>
             If you love soccer, AI, and creating opportunities for players worldwide,
             we'd love to hear from you.
           </p>

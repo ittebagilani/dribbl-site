@@ -19,7 +19,8 @@ const FooterGrid = () => {
 
       ctx.clearRect(0, 0, W, H)
       ctx.globalAlpha = 0.04
-      ctx.strokeStyle = '#F4F4F2'
+      const textColor = getComputedStyle(document.documentElement).getPropertyValue('--text').trim() || '#F4F4F2'
+      ctx.strokeStyle = textColor
       ctx.lineWidth = 0.8
 
       // Isometric grid
@@ -67,24 +68,24 @@ const SocialIcon = ({ icon: Icon, label, href }) => (
     style={{
       width: 36,
       height: 36,
-      border: '1px solid rgba(244,244,242,0.15)',
+      border: '1px solid var(--border)',
       borderRadius: '50%',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      color: 'rgba(244,244,242,0.5)',
+      color: 'var(--text-muted)',
       textDecoration: 'none',
       transition: 'border-color 0.2s, background 0.2s, color 0.2s',
     }}
     onMouseEnter={(e) => {
-      e.currentTarget.style.borderColor = '#FF0040'
+      e.currentTarget.style.borderColor = 'var(--accent)'
       e.currentTarget.style.background = 'rgba(255,0,64,0.06)'
-      e.currentTarget.style.color = '#FF0040'
+      e.currentTarget.style.color = 'var(--accent)'
     }}
     onMouseLeave={(e) => {
-      e.currentTarget.style.borderColor = 'rgba(244,244,242,0.15)'
+      e.currentTarget.style.borderColor = 'var(--border)'
       e.currentTarget.style.background = 'transparent'
-      e.currentTarget.style.color = 'rgba(244,244,242,0.5)'
+      e.currentTarget.style.color = 'var(--text-muted)'
     }}
   >
     <Icon size={14} strokeWidth={1.5} />
@@ -99,7 +100,7 @@ const columns = [
   },
   {
     title: 'Support',
-    links: [['Contact Us', '/contact'], ['Privacy Policy', '#'], ['Terms of Service', '#']],
+    links: [['Contact Us', '/contact'], ['Privacy Policy', '/privacy'], ['Terms of Service', '/terms']],
   },
   {
     title: 'Connect',
@@ -112,7 +113,7 @@ const Footer = () => {
   return (
   <footer
     style={{
-      background: '#0A0A0A',
+      background: 'var(--dark)',
       position: 'relative',
       overflow: 'hidden',
     }}
@@ -130,7 +131,7 @@ const Footer = () => {
           flexWrap: 'wrap',
           gap: isMobile ? 20 : 32,
           padding: isMobile ? '48px 24px 32px' : '56px 80px 40px',
-          borderBottom: '1px solid rgba(244,244,242,0.06)',
+          borderBottom: '1px solid var(--border-weak)',
           textAlign: 'center',
         }}
       >
@@ -147,7 +148,7 @@ const Footer = () => {
             style={{
               fontFamily: 'Manrope, sans-serif',
               fontSize: 11,
-              color: 'rgba(244,244,242,0.3)',
+              color: 'var(--text-faint)',
               letterSpacing: '0.08em',
             }}
           >
@@ -181,7 +182,7 @@ const Footer = () => {
             style={{
               fontFamily: 'Manrope, sans-serif',
               fontSize: 11,
-              color: 'rgba(244,244,242,0.25)',
+              color: 'var(--text-faint)',
               letterSpacing: '0.06em',
               marginBottom: 8,
             }}
@@ -192,7 +193,7 @@ const Footer = () => {
             style={{
               fontFamily: 'Manrope, sans-serif',
               fontSize: 10,
-              color: 'rgba(244,244,242,0.12)',
+              color: 'var(--text-faint)',
               letterSpacing: '0.06em',
             }}
           >
@@ -216,7 +217,7 @@ const Footer = () => {
                 style={{
                   fontFamily: 'Manrope, sans-serif',
                   fontSize: 10,
-                  color: '#FF0040',
+                  color: 'var(--accent)',
                   letterSpacing: '0.14em',
                   marginBottom: 16,
                 }}
@@ -227,18 +228,20 @@ const Footer = () => {
                 <a
                   key={label}
                   href={href}
+                  target={href.startsWith('http') ? '_blank' : undefined}
+                  rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   style={{
                     display: 'block',
                     fontFamily: 'Manrope, sans-serif',
                     fontSize: 11,
-                    color: 'rgba(244,244,242,0.3)',
+                    color: 'var(--text-muted)',
                     textDecoration: 'none',
                     marginBottom: 10,
                     letterSpacing: '0.04em',
                     transition: 'color 0.2s',
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = 'rgba(244,244,242,0.8)')}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(244,244,242,0.3)')}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text)')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
                 >
                   {label}
                 </a>

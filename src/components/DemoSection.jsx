@@ -1,131 +1,56 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React from 'react'
 import TechBracket from './TechBracket'
 import { useBreakpoint } from '../hooks/useBreakpoint'
 import { useModal } from '../context/ModalContext'
 
-/* ── Waveform / Particle Burst Canvas ────────────────── */
-const DemoCanvas = () => {
-  const canvasRef = useRef(null)
+const IconWaitlist = () => (
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <circle cx="12" cy="8" r="5" stroke="#FF0040" strokeWidth="1" />
+    <path d="M4 28C4 22 7.5 18 12 18" stroke="#FF0040" strokeWidth="1" fill="none" />
+    <circle cx="24" cy="24" r="6" stroke="#FF0040" strokeWidth="1" />
+    <line x1="24" y1="20.5" x2="24" y2="27.5" stroke="#FF0040" strokeWidth="1.2" />
+    <line x1="20.5" y1="24" x2="27.5" y2="24" stroke="#FF0040" strokeWidth="1.2" />
+  </svg>
+)
 
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-    const ctx = canvas.getContext('2d')
-    let raf
-    let time = 0
+const IconConnect = () => (
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <circle cx="5" cy="16" r="3.5" stroke="#FF0040" strokeWidth="1" />
+    <circle cx="27" cy="7" r="3.5" stroke="#FF0040" strokeWidth="1" />
+    <circle cx="27" cy="25" r="3.5" stroke="#FF0040" strokeWidth="1" />
+    <line x1="8.5" y1="15" x2="23.5" y2="8.5" stroke="#FF0040" strokeWidth="1" />
+    <line x1="8.5" y1="17" x2="23.5" y2="23.5" stroke="#FF0040" strokeWidth="1" />
+    <circle cx="16" cy="16" r="1.5" fill="#FF0040" />
+  </svg>
+)
 
-    const resize = () => {
-      canvas.width = canvas.offsetWidth
-      canvas.height = canvas.offsetHeight
-    }
+const IconDiscover = () => (
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <circle cx="13" cy="13" r="8" stroke="#FF0040" strokeWidth="1" />
+    <circle cx="13" cy="13" r="3.5" stroke="#FF0040" strokeWidth="0.8" />
+    <line x1="19" y1="19" x2="28" y2="28" stroke="#FF0040" strokeWidth="1.5" />
+    <line x1="13" y1="5" x2="13" y2="8" stroke="#FF0040" strokeWidth="1" />
+    <line x1="13" y1="18" x2="13" y2="21" stroke="#FF0040" strokeWidth="1" />
+    <line x1="5" y1="13" x2="8" y2="13" stroke="#FF0040" strokeWidth="1" />
+    <line x1="18" y1="13" x2="21" y2="13" stroke="#FF0040" strokeWidth="1" />
+  </svg>
+)
 
-    const animate = () => {
-      const W = canvas.width
-      const H = canvas.height
-      const cx = W / 2
-      const cy = H / 2
-      time += 0.018
-
-      ctx.fillStyle = 'rgba(10, 10, 10, 0.18)'
-      ctx.fillRect(0, 0, W, H)
-
-      // ── Waveform bars ──
-      const bars = 80
-      const barW = W / bars
-      for (let i = 0; i < bars; i++) {
-        const t = i / bars
-        const wave1 = Math.sin(t * Math.PI * 6 + time * 2.2) * 0.5
-        const wave2 = Math.sin(t * Math.PI * 10 - time * 1.8) * 0.3
-        const wave3 = Math.sin(t * Math.PI * 3 + time * 0.9) * 0.2
-        const amplitude = (wave1 + wave2 + wave3) * H * 0.22
-        const barH = Math.abs(amplitude) + 2
-
-        const normI = i / bars
-        let r, g, b
-        if (normI < 0.3) { r = 255; g = 0; b = 64 }
-        else if (normI < 0.6) { r = 0; g = 207; b = 255 }
-        else { r = 0; g = 80; b = 255 }
-
-        const alpha = 0.5 + Math.abs(wave1) * 0.5
-        ctx.fillStyle = `rgba(${r},${g},${b},${alpha})`
-        ctx.fillRect(i * barW, cy - barH / 2, barW - 1, barH)
-      }
-
-      // ── Concentric pulse rings ──
-      const rings = 5
-      for (let r = 0; r < rings; r++) {
-        const phase = (time * 0.7 + r / rings) % 1
-        const radius = phase * Math.min(cx, cy) * 0.85
-        const alpha = (1 - phase) * 0.3
-        ctx.beginPath()
-        ctx.arc(cx, cy, radius, 0, Math.PI * 2)
-        ctx.strokeStyle = `rgba(255,0,64,${alpha})`
-        ctx.lineWidth = 1
-        ctx.stroke()
-      }
-
-      // ── Scanning line ──
-      const scanX = ((time * 120) % W)
-      const scanGrad = ctx.createLinearGradient(scanX - 40, 0, scanX + 2, 0)
-      scanGrad.addColorStop(0, 'rgba(255,0,64,0)')
-      scanGrad.addColorStop(1, 'rgba(255,0,64,0.35)')
-      ctx.fillStyle = scanGrad
-      ctx.fillRect(scanX - 40, 0, 42, H)
-
-      raf = requestAnimationFrame(animate)
-    }
-
-    resize()
-    animate()
-
-    const ro = new ResizeObserver(resize)
-    ro.observe(canvas)
-    return () => {
-      cancelAnimationFrame(raf)
-      ro.disconnect()
-    }
-  }, [])
-
-  return (
-    <canvas
-      ref={canvasRef}
-      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
-    />
-  )
-}
+const steps = [
+  { num: '01', label: 'Join Waitlist', desc: 'Join the waitlist and be first to create your profile when we launch.', Icon: IconWaitlist },
+  { num: '02', label: 'Connect', desc: "Find and follow teammates, coaches, and clubs you're part of or want to be part of.", Icon: IconConnect },
+  { num: '03', label: 'Get Discovered', desc: 'Let coaches and scouts come to you while you focus on your game.', Icon: IconDiscover },
+]
 
 /* ── Demo Section ─────────────────────────────────────── */
 const DemoSection = () => {
-  const sectionRef = useRef(null)
-  const [visible, setVisible] = useState(false)
   const { isMobile } = useBreakpoint()
   const { openWaitlist } = useModal()
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true)
-          observer.unobserve(entry.target)
-        }
-      },
-      { threshold: 0.15 },
-    )
-    if (sectionRef.current) observer.observe(sectionRef.current)
-    return () => observer.disconnect()
-  }, [])
-
-  const fade = (delay = 0) => ({
-    opacity: visible ? 1 : 0,
-    transform: visible ? 'none' : 'translateY(20px)',
-    transition: `opacity 0.75s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.75s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
-  })
-
   return (
     <section
-      ref={sectionRef}
       style={{
-        background: '#0A0A0A',
+        background: 'var(--dark)',
         padding: isMobile ? '72px 20px' : '120px 80px',
         display: 'flex',
         flexDirection: 'column',
@@ -134,7 +59,7 @@ const DemoSection = () => {
       }}
     >
       {/* Header */}
-      <div style={{ marginBottom: 64, ...fade(0) }}>
+      <div style={{ marginBottom: 64 }}>
         <div className="overline" style={{ marginBottom: 20 }}>
           // HOW IT WORKS
         </div>
@@ -143,7 +68,7 @@ const DemoSection = () => {
             fontFamily: 'Inter, sans-serif',
             fontWeight: 800,
             fontSize: 'clamp(34px, 4vw, 58px)',
-            color: '#F4F4F2',
+            color: 'var(--text)',
             letterSpacing: '-0.035em',
             margin: '0 0 20px',
           }}
@@ -155,8 +80,8 @@ const DemoSection = () => {
             fontFamily: 'Manrope, sans-serif',
             fontSize: 14,
             lineHeight: 1.9,
-            color: 'rgba(244,244,242,0.65)',
-            maxWidth: 560,
+            color: 'var(--text-muted)',
+            maxWidth: 480,
             margin: '0 auto',
             letterSpacing: '0.02em',
           }}
@@ -168,38 +93,34 @@ const DemoSection = () => {
       {/* Steps */}
       <div
         style={{
-          display: 'flex',
-          flexDirection: isMobile ? 'column' : 'row',
-          gap: isMobile ? 20 : 2,
+          display: 'grid',
+          gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
+          gap: isMobile ? 12 : 2,
           width: '100%',
-          maxWidth: 900,
+          maxWidth: 860,
           marginBottom: 64,
-          ...fade(80),
         }}
       >
-        {[
-          { num: '01', label: 'Join Waitlist', desc: 'Join the waitlist and be first to create your profile when we launch.' },
-          { num: '02', label: 'Connect', desc: 'Find and follow teammates, coaches, and clubs you\'re part of or want to be part of.' },
-          { num: '03', label: 'Get Discovered', desc: 'Let coaches and scouts come to you while you focus on your game.' },
-        ].map(({ num, label, desc }, i) => (
+        {steps.map(({ num, label, desc, Icon }) => (
           <div
             key={num}
             style={{
-              flex: 1,
-              border: '1px solid rgba(255,255,255,0.06)',
-              padding: isMobile ? '24px 20px' : '32px 28px',
-              background: 'rgba(255,255,255,0.02)',
-              position: 'relative',
+              border: '1px solid var(--border)',
+              padding: isMobile ? '28px 24px' : '36px 28px',
+              background: 'var(--bg-alt)',
               textAlign: 'left',
             }}
           >
+            <div style={{ marginBottom: 20 }}>
+              <Icon />
+            </div>
             <div
               style={{
                 fontFamily: 'Manrope, sans-serif',
-                fontSize: 10,
-                color: '#FF0040',
+                fontSize: 9,
+                color: 'var(--accent)',
                 letterSpacing: '0.14em',
-                marginBottom: 16,
+                marginBottom: 12,
               }}
             >
               STEP {num}
@@ -208,10 +129,10 @@ const DemoSection = () => {
               style={{
                 fontFamily: 'Inter, sans-serif',
                 fontWeight: 800,
-                fontSize: 18,
-                color: '#F4F4F2',
+                fontSize: 17,
+                color: 'var(--text)',
                 letterSpacing: '-0.02em',
-                margin: '0 0 12px',
+                margin: '0 0 10px',
               }}
             >
               {label}
@@ -219,9 +140,9 @@ const DemoSection = () => {
             <p
               style={{
                 fontFamily: 'Manrope, sans-serif',
-                fontSize: 14,
+                fontSize: 13,
                 lineHeight: 1.85,
-                color: 'rgba(244,244,242,0.6)',
+                color: 'var(--text-muted)',
                 margin: 0,
                 letterSpacing: '0.02em',
               }}
@@ -232,103 +153,22 @@ const DemoSection = () => {
         ))}
       </div>
 
-      {/* Demo Box */}
-      <div style={{ width: '100%', maxWidth: 900, marginBottom: 48, ...fade(150) }}>
-        <TechBracket color="#FF0040" size={isMobile ? 8 : 16} style={{ display: 'block' }}>
-          <div
-            style={{
-              position: 'relative',
-              height: isMobile ? 240 : 420,
-              background: '#000',
-              overflow: 'hidden',
-            }}
-          >
-            <DemoCanvas />
-
-            {/* Overlay label */}
-            <div
-              style={{
-                position: 'absolute',
-                inset: 0,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: 12,
-                zIndex: 2,
-              }}
-            >
-              <div
-                style={{
-                  width: 1,
-                  height: 40,
-                  background: 'rgba(255,0,64,0.4)',
-                }}
-              />
-              <div
-                style={{
-                  fontFamily: 'Manrope, sans-serif',
-                  fontSize: 11,
-                  color: 'rgba(244,244,242,0.6)',
-                  letterSpacing: '0.18em',
-                  textAlign: 'center',
-                }}
-              >
-                DEMO VIDEO COMING SOON
-              </div>
-              <div
-                style={{
-                  fontFamily: 'Manrope, sans-serif',
-                  fontSize: 9,
-                  color: 'rgba(255,0,64,0.5)',
-                  letterSpacing: '0.14em',
-                }}
-              >
-                // AI ANALYSIS PREVIEW ACTIVE
-              </div>
-            </div>
-
-            {/* Corner UI ticks */}
-            {[
-              { top: 16, left: 16 },
-              { top: 16, right: 16 },
-              { bottom: 16, left: 16 },
-              { bottom: 16, right: 16 },
-            ].map((pos, i) => (
-              <div
-                key={i}
-                style={{
-                  position: 'absolute',
-                  ...pos,
-                  fontFamily: 'Manrope, sans-serif',
-                  fontSize: 9,
-                  color: 'rgba(255,0,64,0.4)',
-                  letterSpacing: '0.08em',
-                  zIndex: 3,
-                }}
-              >
-                {i === 0 && 'REC'}
-                {i === 1 && '4K'}
-                {i === 2 && '00:00:00'}
-                {i === 3 && 'AI-PROC'}
-              </div>
-            ))}
-          </div>
-        </TechBracket>
+      <div
+        className="stock-frame"
+        style={{
+          width: '100%',
+          maxWidth: 980,
+          height: isMobile ? 200 : 300,
+          borderRadius: 20,
+        }}
+      >
+        <img
+          className="stock-img"
+          src="/images/stock/aerial-field.jpg"
+          alt="Aerial view of a soccer field"
+        />
       </div>
 
-      {/* Buttons */}
-      <div style={{ display: 'flex', gap: 16, ...fade(300) }}>
-        <TechBracket color="#FF0040" size={10}>
-          <button
-            className="btn-glass"
-            onClick={openWaitlist}
-            style={{ color: '#F4F4F2', borderColor: 'rgba(244,244,242,0.12)' }}
-          >
-            Join Waitlist
-          </button>
-        </TechBracket>
-      </div>
     </section>
   )
 }
