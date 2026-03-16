@@ -18,7 +18,7 @@ const statements = [
     num: '03',
     headline: 'Because no other platform was built with soccer players at the centre.',
     detail:
-      "Dribbl isn't an afterthought - it's built from the ground up for the sport and the people who live it.",
+      "Dribbl isn't an afterthought, it's built from the ground up for the sport and the people who live it.",
   },
 ]
 

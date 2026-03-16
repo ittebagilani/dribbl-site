@@ -123,7 +123,7 @@ const ContactPage = () => {
           Let's talk.
         </h1>
         <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.9, color: 'var(--text-muted)', maxWidth: 500, margin: 0, letterSpacing: '0.02em', ...fade(200) }}>
-          Whether you're a player, scout, club, or just curious - we want to hear from you.
+          Whether you're a player, scout, club, or just curious, we want to hear from you.
         </p>
       </section>
 

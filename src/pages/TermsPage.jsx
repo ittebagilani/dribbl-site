@@ -32,7 +32,7 @@ const sections = [
     ],
   },
   {
-    title: '4. User Accounts - Types and Permissions',
+    title: '4. User Accounts, Types and Permissions',
     body: [
       'Dribbl offers the following account types:',
     ],

@@ -261,7 +261,7 @@ const TeamPage = () => {
         </h1>
         <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.9, color: 'var(--text-muted)', maxWidth: 560, margin: 0, letterSpacing: '0.02em' }}>
           A diverse team of soccer enthusiasts, tech innovators, and specialists united by
-          one mission - ensuring no exceptional talent goes undiscovered.
+          one mission, ensuring no exceptional talent goes undiscovered.
         </p>
       </section>
 

@@ -49,7 +49,7 @@ const features = [
     Icon: IconPlayer,
     title: 'For Players',
     subtitle: 'Show the World What You\'ve Got.',
-    desc: 'Your Dribbl profile is your soccer identity - built by you, seen by everyone that matters. Document your journey, share highlights, and get seen by coaches and scouts around the clock.',
+    desc: 'Your Dribbl profile is your soccer identity, built by you and seen by everyone that matters. Document your journey, share highlights, and get seen by coaches and scouts around the clock.',
     bullets: [
       'Build a complete profile with club history and positions',
       'Upload match highlights and career footage',
@@ -60,7 +60,7 @@ const features = [
     Icon: IconScout,
     title: 'For Coaches & Scouts',
     subtitle: 'Find Your Next Player. Right Here.',
-    desc: 'A recruitment dashboard built around how coaches actually work. Browse real profiles, watch footage, and reach out directly - no middlemen, no wasted time.',
+    desc: 'A recruitment dashboard built around how coaches actually work. Browse real profiles, watch footage, and reach out directly, no middlemen and no wasted time.',
     bullets: [
       'Search and filter players by age, position, and location',
       'Review profiles and highlight reels',
@@ -82,7 +82,7 @@ const features = [
     Icon: IconAI,
     title: 'Built for Everyone in the Game',
     subtitle: 'One Platform. Every Role.',
-    desc: 'Whether you\'re a player chasing your next opportunity, a coach looking for talent, or a club building your presence - Dribbl has a place for you.',
+    desc: 'Whether you\'re a player chasing your next opportunity, a coach looking for talent, or a club building your presence, Dribbl has a place for you.',
     bullets: [
       'Players aged 14–U23 growing their soccer identity',
       'Coaches accessing a growing network of talent',
@@ -255,7 +255,7 @@ const FeaturesSection = () => {
             letterSpacing: '0.02em',
           }}
         >
-          Dribbl brings together the people that make soccer happen - all on one platform.
+          Dribbl brings together the people that make soccer happen, all on one platform.
         </p>
       </div>
 
