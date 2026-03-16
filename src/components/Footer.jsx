@@ -152,7 +152,7 @@ const Footer = () => {
               letterSpacing: '0.08em',
             }}
           >
-            Dribbl — Your Journey. Your Game. Your Network.
+            Dribbl - Your Journey. Your Game. Your Network.
           </span>
         )}
 

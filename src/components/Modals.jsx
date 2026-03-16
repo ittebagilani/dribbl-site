@@ -322,18 +322,18 @@ const OpenPositionsModal = ({ onClose }) => {
           textAlign: 'center',
         }}>
           <div style={{ fontFamily: 'JetBrains Mono', fontSize: 22, color: 'rgba(255,255,255,0.1)', marginBottom: 12 }}>
-            ——
+            --
           </div>
           <div style={{ fontFamily: 'JetBrains Mono', fontSize: 12, color: 'var(--text-muted)', letterSpacing: '0.1em' }}>
             NO CURRENT OPENINGS
           </div>
           <p style={{ fontFamily: 'JetBrains Mono', fontSize: 12, color: 'var(--text-faint)', margin: '12px 0 0', letterSpacing: '0.02em', lineHeight: 1.7 }}>
-            Check back soon — we're growing.
+            Check back soon - we're growing.
           </p>
         </div>
 
         <p style={{ fontFamily: 'JetBrains Mono', fontSize: 12, color: 'var(--text-muted)', margin: '0 0 20px', letterSpacing: '0.02em', lineHeight: 1.7 }}>
-          Passionate about soccer and tech? Reach out anyway —<br />
+          Passionate about soccer and tech? Reach out anyway -<br />
           we love meeting people who care about the game.
         </p>
 

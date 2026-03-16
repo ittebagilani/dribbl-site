@@ -1,7 +1,7 @@
 import React from 'react'
 
 /**
- * TechBracket — Precisely positioned L-shaped corner brackets.
+ * TechBracket - Precisely positioned L-shaped corner brackets.
  * Renders children inside four 1px bordered corner decorations.
  */
 const TechBracket = ({

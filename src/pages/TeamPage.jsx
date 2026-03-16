@@ -5,7 +5,7 @@ import Footer from '../components/Footer'
 import { useBreakpoint } from '../hooks/useBreakpoint'
 import { useModal } from '../context/ModalContext'
 
-/* ── Geometric avatar — unique per member ────────────── */
+/* ── Geometric avatar - unique per member ────────────── */
 const Avatar = ({ initials, index, image }) => {
   const [imgError, setImgError] = useState(false)
 
@@ -121,7 +121,7 @@ const MemberCard = ({ name, role, university, bio, initials, index, image, linke
           boxSizing: 'border-box',
           position: 'relative',
         }}>
-          {/* LinkedIn button — top right */}
+          {/* LinkedIn button - top right */}
           <a
             href={linkedin || '#'}
             target="_blank"
@@ -182,13 +182,13 @@ const team = [
     linkedin: 'https://www.linkedin.com/in/aruyanpuva23/',
   },
   {
-    name: 'Azish Qureshi',
-    initials: 'AZ',
-    role: 'Co-founder · Founding Engineer · Lead Front-End',
-    university: 'University of Guelph · Computer Science',
-    bio: 'Guelph CS student leading the front-end and interested in reinventing soccer through technology.',
-    image: '/images/Azish.jpeg',
-    linkedin: 'https://www.linkedin.com/in/azishq/',
+    name: 'Areesh Khan',
+    initials: 'AKH',
+    role: 'Co-founder · CFO',
+    university: 'York Schulich School of Business · BBA',
+    bio: 'Schulich BBA student focused on turning ideas into action through partnerships and go-to-market execution.',
+    image: '/images/Areesh.png',
+    linkedin: 'https://www.linkedin.com/in/areesh-khan-555084299/',
   },
   {
     name: 'Akram Kai',
@@ -199,14 +199,15 @@ const team = [
     image: '/images/Akram.png',
     linkedin: 'https://www.linkedin.com/in/akram-klai-308a54285/',
   },
+  
   {
-    name: 'Areesh Khan',
-    initials: 'AKH',
-    role: 'Co-founder · CFO',
-    university: 'York Schulich School of Business · BBA',
-    bio: 'Schulich BBA student focused on turning ideas into action through partnerships and go-to-market execution.',
-    image: '/images/Areesh.png',
-    linkedin: 'https://www.linkedin.com/in/areesh-khan-555084299/',
+    name: 'Azish Qureshi',
+    initials: 'AZ',
+    role: 'Co-founder · Lead Front-End',
+    university: 'University of Guelph · Computer Science',
+    bio: 'Guelph CS student leading the front-end and interested in reinventing soccer through technology.',
+    image: '/images/Azish.jpeg',
+    linkedin: 'https://www.linkedin.com/in/azishq/',
   },
   {
     name: 'Edris Adel',
@@ -260,7 +261,7 @@ const TeamPage = () => {
         </h1>
         <p style={{ fontFamily: 'Manrope', fontSize: 15, lineHeight: 1.9, color: 'var(--text-muted)', maxWidth: 560, margin: 0, letterSpacing: '0.02em' }}>
           A diverse team of soccer enthusiasts, tech innovators, and specialists united by
-          one mission — ensuring no exceptional talent goes undiscovered.
+          one mission - ensuring no exceptional talent goes undiscovered.
         </p>
       </section>
 

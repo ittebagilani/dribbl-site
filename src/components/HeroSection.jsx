@@ -271,7 +271,7 @@ const HeroSection = () => {
 
       </div>
 
-      {/* ── Video Pane — full height on desktop, fixed height block on tablet/mobile ── */}
+      {/* ── Video Pane - full height on desktop, fixed height block on tablet/mobile ── */}
       <div
         style={{
           flex: isTablet ? 'none' : '0 0 50%',
